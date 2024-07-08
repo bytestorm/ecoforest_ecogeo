@@ -2,14 +2,13 @@
 
 from __future__ import annotations
 
-from pyecoforest.models.device import Device
-
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity import EntityDescription
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN, MANUFACTURER
 from .coordinator import EcoforestCoordinator
+from .overrides.device import EcoGeoDevice
 
 
 class EcoforestEntity(CoordinatorEntity[EcoforestCoordinator]):
@@ -28,6 +27,8 @@ class EcoforestEntity(CoordinatorEntity[EcoforestCoordinator]):
 
         super().__init__(coordinator)
 
+        # DEADBEEF
+
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, coordinator.data.serial_number)},
             name=MANUFACTURER,
@@ -37,7 +38,7 @@ class EcoforestEntity(CoordinatorEntity[EcoforestCoordinator]):
         )
 
     @property
-    def data(self) -> Device:
+    def data(self) -> EcoGeoDevice:
         """Return ecoforest data."""
         assert self.coordinator.data
         return self.coordinator.data

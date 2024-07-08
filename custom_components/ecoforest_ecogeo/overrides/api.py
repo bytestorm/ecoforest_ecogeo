@@ -1,0 +1,31 @@
+from dataclasses import dataclass
+
+from pyecoforest.api import EcoforestApi
+
+from custom_components.ecoforest_ecogeo.overrides.device import EcoGeoDevice
+
+
+@dataclass
+class ApiRequest:
+    op: None
+    start: None
+    number: None
+
+
+API_SERIAL = ApiRequest({
+    "op": "2002",
+    "start": 5323,
+    "number": 6
+})
+
+class EcoGeoApi(EcoforestApi):
+    async def get(self) -> EcoGeoDevice:
+        """Retrieve ecoforest information from api."""
+        return EcoGeoDevice.build(
+            {
+                "serial": await self._serial(),
+            }
+        )
+
+    async def _serial(self) -> dict[str, str]:
+        return await self._request(data={"idOperacion": API_SERIAL.op, "dir": API_SERIAL.start, "num": API_SERIAL.number})

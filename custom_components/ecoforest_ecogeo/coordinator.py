@@ -2,22 +2,23 @@
 
 import logging
 
-from pyecoforest.api import EcoforestApi
+#from pyecoforest.api import EcoforestApi
 from pyecoforest.exceptions import EcoforestError
-from pyecoforest.models.device import Device
 
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
+from .overrides.api import EcoGeoApi
+from .overrides.device import EcoGeoDevice
 from .const import POLLING_INTERVAL
 
 _LOGGER = logging.getLogger(__name__)
 
 
-class EcoforestCoordinator(DataUpdateCoordinator[Device]):
+class EcoforestCoordinator(DataUpdateCoordinator[EcoGeoDevice]):
     """DataUpdateCoordinator to gather data from ecoforest device."""
 
-    def __init__(self, hass: HomeAssistant, api: EcoforestApi) -> None:
+    def __init__(self, hass: HomeAssistant, api: EcoGeoApi) -> None:
         """Initialize DataUpdateCoordinator."""
 
         super().__init__(
@@ -28,7 +29,7 @@ class EcoforestCoordinator(DataUpdateCoordinator[Device]):
         )
         self.api = api
 
-    async def _async_update_data(self) -> Device:
+    async def _async_update_data(self) -> EcoGeoDevice:
         """Fetch all device and sensor data from api."""
         try:
             data = await self.api.get()
