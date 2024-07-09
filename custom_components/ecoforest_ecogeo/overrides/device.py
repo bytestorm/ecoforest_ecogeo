@@ -58,6 +58,7 @@ class EcoGeoDevice:
         return EcoGeoDevice(
             is_supported=True,
             model_name=MODEL_NAME,
+            firmware=firmware,
             serial_number=serial_number,
             t_outdoor=float(stats["t_outdoor"]),
             t_dhw=float(stats["t_dhw"]),
