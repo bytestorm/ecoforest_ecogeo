@@ -8,16 +8,12 @@ from custom_components.ecoforest_ecogeo.overrides.device import EcoGeoDevice
 
 @dataclass
 class ApiRequest:
-    op: None
-    start: None
-    number: None
+    op: str
+    start: int
+    number: int
 
 
-API_SERIAL = ApiRequest({
-    "op": "2002",
-    "start": 5323,
-    "number": 6
-})
+API_SERIAL = ApiRequest("2002", 5323, 6)
 
 
 class EcoGeoApi(EcoforestApi):
