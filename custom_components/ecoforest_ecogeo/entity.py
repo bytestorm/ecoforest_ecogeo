@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from homeassistant.helpers.device_registry import DeviceInfo
-from homeassistant.helpers.entity import EntityDescription
+from homeassistant.helpers.entity import EntityDescription, generate_entity_id
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN, MANUFACTURER
@@ -24,6 +24,7 @@ class EcoforestEntity(CoordinatorEntity[EcoforestCoordinator]):
         """Initialize device information."""
         self.entity_description = description
         self._attr_unique_id = f"{coordinator.data.serial_number}_{description.key}"
+        self.entity_id = generate_entity_id("sensor.{}", description.key)
 
         super().__init__(coordinator)
 

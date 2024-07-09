@@ -111,9 +111,6 @@ class EcoforestSensor(SensorEntity, EcoforestEntity):
     """Representation of an Ecoforest sensor."""
     entity_description: EcoforestSensorEntityDescription
 
-    def __init__(self) -> None:
-        self.entity_id = generate_entity_id("sensor.{}", self.entity_description.key)
-
     @property
     def native_value(self) -> StateType:
         """Return the state of the sensor."""
