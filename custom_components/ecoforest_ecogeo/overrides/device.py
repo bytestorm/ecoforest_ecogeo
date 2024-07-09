@@ -30,6 +30,7 @@ class EcoGeoDevice:
     is_supported: bool
     model_name: str
     serial_number: str
+    firmware: str
 
     t_outdoor: float | None = None
     t_dhw: float | None = None
@@ -43,6 +44,7 @@ class EcoGeoDevice:
     def build(cls, data: dict[str, dict[str, str]]):  # -> EcoGeoDevice:
         #DEADBEEF
         serial_number = "123"
+        firmware = "321"
         stats = {
             "t_outdoor": "29.3",
             "t_dhw": "60.3",
