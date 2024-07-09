@@ -17,6 +17,7 @@ from homeassistant.const import (
     UnitOfPressure,
     UnitOfTemperature,
     UnitOfTime,
+    UnitOfPower
 )
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
@@ -43,32 +44,50 @@ SENSOR_TYPES: tuple[EcoforestSensorEntityDescription, ...] = (
         translation_key="t_outdoor",
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         device_class=SensorDeviceClass.TEMPERATURE,
-        value_fn=lambda data: 123,
-        #value_fn=lambda data: data.t_outdoor,
+        value_fn=lambda data: data.t_outdoor,
     ),
     EcoforestSensorEntityDescription(
         key="t_dhw",
         translation_key="t_dhw",
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         device_class=SensorDeviceClass.TEMPERATURE,
-        value_fn=lambda data: 123,
-        #value_fn=lambda data: data.t_dhw,
+        value_fn=lambda data: data.t_dhw,
     ),
     EcoforestSensorEntityDescription(
         key="t_cooling",
         translation_key="t_cooling",
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         device_class=SensorDeviceClass.TEMPERATURE,
-        value_fn=lambda data: 123,
-        #value_fn=lambda data: data.t_cooling,
+        value_fn=lambda data: data.t_cooling,
     ),
     EcoforestSensorEntityDescription(
         key="t_heating",
         translation_key="t_heating",
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         device_class=SensorDeviceClass.TEMPERATURE,
-        value_fn=lambda data: 123,
-        #value_fn=lambda data: data.t_heating,
+        value_fn=lambda data: data.t_heating,
+    ),
+
+    EcoforestSensorEntityDescription(
+        key="power_heating",
+        translation_key="power_heating",
+        native_unit_of_measurement=UnitOfPower.WATT,
+        device_class=SensorDeviceClass.POWER,
+        value_fn=lambda data: data.power_heating,
+    ),
+    EcoforestSensorEntityDescription(
+        key="power_cooling",
+        translation_key="power_cooling",
+        native_unit_of_measurement=UnitOfPower.WATT,
+        device_class=SensorDeviceClass.POWER,
+        value_fn=lambda data: data.power_cooling,
+    ),
+    EcoforestSensorEntityDescription(
+        key="power_electric",
+        translation_key="power_electric",
+        native_unit_of_measurement=UnitOfPower.WATT,
+        device_class=SensorDeviceClass.POWER,
+        value_fn=lambda data: data.power_electric,
     ),
 )
 
