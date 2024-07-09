@@ -5,7 +5,6 @@ from __future__ import annotations
 import logging
 from typing import Any
 
-from httpx import BasicAuth
 from pyecoforest.exceptions import EcoforestAuthenticationRequired
 import voluptuous as vol
 
@@ -41,7 +40,8 @@ class EcoForestEcoGeoConfigFlow(ConfigFlow, domain=DOMAIN):
             try:
                 api = EcoGeoApi(
                     user_input[CONF_HOST],
-                    BasicAuth(user_input[CONF_USERNAME], user_input[CONF_PASSWORD]),
+                    user_input[CONF_USERNAME],
+                    user_input[CONF_PASSWORD],
                 )
                 device = await api.get()
             except EcoforestAuthenticationRequired:
