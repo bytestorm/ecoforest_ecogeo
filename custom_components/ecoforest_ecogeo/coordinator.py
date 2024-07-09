@@ -2,7 +2,6 @@
 
 import logging
 
-#from pyecoforest.api import EcoforestApi
 from pyecoforest.exceptions import EcoforestError
 
 from homeassistant.core import HomeAssistant

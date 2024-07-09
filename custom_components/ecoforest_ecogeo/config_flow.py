@@ -26,7 +26,7 @@ STEP_USER_DATA_SCHEMA = vol.Schema(
 )
 
 
-class EcoForestConfigFlow(ConfigFlow, domain=DOMAIN):
+class EcoForestEcoGeoConfigFlow(ConfigFlow, domain=DOMAIN):
     """Handle a config flow for Ecoforest."""
 
     VERSION = 1

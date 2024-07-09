@@ -6,8 +6,6 @@ from collections.abc import Callable
 from dataclasses import dataclass
 import logging
 
-#from pyecoforest.models.device import Alarm, Device, State
-
 from homeassistant.components.sensor import (
     SensorDeviceClass,
     SensorEntity,
@@ -45,28 +43,32 @@ SENSOR_TYPES: tuple[EcoforestSensorEntityDescription, ...] = (
         translation_key="t_outdoor",
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         device_class=SensorDeviceClass.TEMPERATURE,
-        value_fn=lambda data: data.t_outdoor,
+        value_fn=lambda data: 123,
+        #value_fn=lambda data: data.t_outdoor,
     ),
     EcoforestSensorEntityDescription(
         key="t_dhw",
         translation_key="t_dhw",
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         device_class=SensorDeviceClass.TEMPERATURE,
-        value_fn=lambda data: data.t_dhw,
+        value_fn=lambda data: 123,
+        #value_fn=lambda data: data.t_dhw,
     ),
     EcoforestSensorEntityDescription(
         key="t_cooling",
         translation_key="t_cooling",
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         device_class=SensorDeviceClass.TEMPERATURE,
-        value_fn=lambda data: data.t_cooling,
+        value_fn=lambda data: 123,
+        #value_fn=lambda data: data.t_cooling,
     ),
     EcoforestSensorEntityDescription(
         key="t_heating",
         translation_key="t_heating",
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         device_class=SensorDeviceClass.TEMPERATURE,
-        value_fn=lambda data: data.t_heating,
+        value_fn=lambda data: 123,
+        #value_fn=lambda data: data.t_heating,
     ),
 )
 

@@ -1,5 +1,3 @@
-"""Constants for the Ecoforest integration."""
-
 from datetime import timedelta
 
 DOMAIN = "ecoforest_ecogeo"
