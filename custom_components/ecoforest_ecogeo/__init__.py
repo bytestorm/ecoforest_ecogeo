@@ -19,12 +19,9 @@ _LOGGER = logging.getLogger(__name__)
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up Ecoforest from a config entry."""
 
-    _LOGGER.error("DEADBEEF 1")
-
     api = EcoGeoApi(entry.data[CONF_HOST], entry.data[CONF_USERNAME], entry.data[CONF_PASSWORD])
 
     try:
-        _LOGGER.error("DEADBEEF 2")
         device = await api.get()
         _LOGGER.debug("Ecoforest: %s", device)
     except EcoforestAuthenticationRequired:
@@ -41,7 +38,6 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     hass.data.setdefault(DOMAIN, {})[entry.entry_id] = coordinator
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
-    _LOGGER.error("DEADBEEF 3")
 
     return True
 
