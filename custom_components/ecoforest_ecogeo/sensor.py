@@ -21,6 +21,7 @@ from homeassistant.const import (
     UnitOfPower
 )
 from homeassistant.core import HomeAssistant
+from homeassistant.helpers.entity import generate_entity_id
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import StateType
 
@@ -110,9 +111,8 @@ class EcoforestSensor(SensorEntity, EcoforestEntity):
     """Representation of an Ecoforest sensor."""
     entity_description: EcoforestSensorEntityDescription
 
-    @cached_property
-    def unique_id(self) -> str | None:
-        return self.entity_description.key
+    def __init__(self) -> None:
+        self.entity_id = generate_entity_id("sensor.{}", self.entity_description.key)
 
     @property
     def native_value(self) -> StateType:
