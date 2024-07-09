@@ -23,7 +23,7 @@ class EcoGeoApi(EcoforestApi):
         user: str,
         password: str
     ) -> None:
-        super(EcoforestApi, self).__init__(host, httpx.BasicAuth(user, password))
+        super().__init__(host, httpx.BasicAuth(user, password))
 
     async def get(self) -> EcoGeoDevice:
         """Retrieve ecoforest information from api."""
