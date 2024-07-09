@@ -5,6 +5,7 @@ from __future__ import annotations
 from collections.abc import Callable
 from dataclasses import dataclass
 import logging
+from functools import cached_property
 
 from homeassistant.components.sensor import (
     SensorDeviceClass,
@@ -107,8 +108,11 @@ async def async_setup_entry(
 
 class EcoforestSensor(SensorEntity, EcoforestEntity):
     """Representation of an Ecoforest sensor."""
-
     entity_description: EcoforestSensorEntityDescription
+
+    @cached_property
+    def unique_id(self) -> str | None:
+        return self.entity_description.key
 
     @property
     def native_value(self) -> StateType:

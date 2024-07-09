@@ -3,7 +3,7 @@
   "name": "Ecoforest Ecogeo",
   "codeowners": ["@bytestorm"],
   "config_flow": true,
-  "documentation": "https://github.com/bytestorm/ha_ecoforest_ecogeo",
+  "documentation": "https://github.com/bytestorm/ecoforest_ecogeo",
   "iot_class": "local_polling",
   "loggers": ["pyecoforest"],
   "requirements": ["pyecoforest==0.4.0"],
