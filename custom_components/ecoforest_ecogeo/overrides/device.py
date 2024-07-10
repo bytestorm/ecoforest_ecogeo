@@ -43,7 +43,7 @@ class EcoGeoDevice:
     @classmethod
     def build(cls, data: dict[str, dict[str, str]]):  # -> EcoGeoDevice:
         #DEADBEEF
-        serial_number = "123"
+        serial_number = data["serial"]["value"]
         firmware = "321"
         stats = {
             "t_outdoor": "29.3",
