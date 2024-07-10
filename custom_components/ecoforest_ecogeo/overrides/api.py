@@ -15,6 +15,8 @@ class ApiRequest:
 
 
 API_SERIAL = ApiRequest("2002", 5323, 6)
+API_TANK_TEMPERATURES = ApiRequest("2002", 200, 2)
+BASIC_TEMPERATURES = ApiRequest("2002", 8, 3)
 
 
 class EcoGeoApi(EcoforestApi):
@@ -28,15 +30,26 @@ class EcoGeoApi(EcoforestApi):
 
     async def get(self) -> EcoGeoDevice:
         """Retrieve ecoforest information from api."""
+        serial = await self._serial()
+        temperatures_tanks = await self._t_tanks()
+        temperatures_basic = await self._t_basic()
+
         return EcoGeoDevice.build(
             {
-                "serial": {"value": await self._serial()}
+                "serial": {"value": serial},
+                "temperatures": {
+                    "t_outdoor": self.parse_ecoforest_float(temperatures_basic[0]),
+                    "t_heating": self.parse_ecoforest_float(temperatures_tanks[0]),
+                    "t_cooling": self.parse_ecoforest_float(temperatures_tanks[1]),
+                    "t_dhw": self.parse_ecoforest_float(temperatures_basic[2])
+                }
+
             }
         )
 
     async def _serial(self) -> str:
         response = await self._request(data={"idOperacion": API_SERIAL.op, "dir": API_SERIAL.start, "num": API_SERIAL.number})
-        return parse_serial_number(response)
+        return self.parse_serial_number(response)
 
     def _parse(self, response: str) -> dict[str, str]:
         lines = response.split('\n')
@@ -46,6 +59,7 @@ class EcoGeoApi(EcoforestApi):
             raise Exception("bad response: {}".format(response))
 
         return lines[1].split('&')[2:]
+
     def parse_serial_number(self, data):
         serial_dictionary = ["--"] + [*string.digits] + [*string.ascii_uppercase]
         return ''.join([serial_dictionary[self.parse_ecoforest_int(x)] for x in data])
@@ -53,3 +67,6 @@ class EcoGeoApi(EcoforestApi):
     def parse_ecoforest_int(self, value):
         result = int(value, 16)
         return result if result <= 32768 else result - 65536
+
+    def parse_ecoforest_float(self, value):
+        return self.parse_ecoforest_int(value) / 10

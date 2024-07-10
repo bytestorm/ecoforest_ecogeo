@@ -46,10 +46,10 @@ class EcoGeoDevice:
         serial_number = data["serial"]["value"]
         firmware = "321"
         stats = {
-            "t_outdoor": "29.3",
-            "t_dhw": "60.3",
-            "t_cooling": "8",
-            "t_heating": "12",
+            "t_outdoor": data["temperatures"]["t_outdoor"],
+            "t_dhw": data["temperatures"]["t_dhw"],
+            "t_cooling": data["temperatures"]["t_cooling"],
+            "t_heating": data["temperatures"]["t_heating"],
             "power_heating": "4321",
             "power_cooling": "6789",
             "power_electric": "1234",
