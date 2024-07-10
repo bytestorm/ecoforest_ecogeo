@@ -50,9 +50,9 @@ class EcoGeoDevice:
             "t_dhw": data["temperatures"]["t_dhw"],
             "t_cooling": data["temperatures"]["t_cooling"],
             "t_heating": data["temperatures"]["t_heating"],
-            "power_heating": "4321",
-            "power_cooling": "6789",
-            "power_electric": "1234",
+            "power_heating": data["power"]["power_heating"],
+            "power_cooling": data["power"]["power_cooling"],
+            "power_electric": data["power"]["power_electric"],
         }
 
         return EcoGeoDevice(

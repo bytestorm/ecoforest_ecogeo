@@ -16,7 +16,10 @@ class ApiRequest:
 
 API_SERIAL = ApiRequest("2002", 5323, 6)
 API_TANK_TEMPERATURES = ApiRequest("2002", 200, 2)
-API_BASIC_TEMPERATURES = ApiRequest("2002", 8, 3)
+API_BASIC_TEMPERATURES = ApiRequest("2002", 8, 4)
+API_POWER = ApiRequest("2002", 5066, 18)
+API_POWER_COOLING = ApiRequest("2002", 5185, 1)
+
 
 
 class EcoGeoApi(EcoforestApi):
@@ -33,17 +36,23 @@ class EcoGeoApi(EcoforestApi):
         serial = await self._serial()
         temperatures_tanks = await self._t_tanks()
         temperatures_basic = await self._t_basic()
+        power = await self._power()
+        power_cooling = await self._power_cooling()
 
         return EcoGeoDevice.build(
             {
                 "serial": {"value": serial},
                 "temperatures": {
-                    "t_outdoor": self.parse_ecoforest_float(temperatures_basic[0]),
+                    "t_outdoor": self.parse_ecoforest_float(temperatures_basic[3]),
                     "t_heating": self.parse_ecoforest_float(temperatures_tanks[0]),
                     "t_cooling": self.parse_ecoforest_float(temperatures_tanks[1]),
-                    "t_dhw": self.parse_ecoforest_float(temperatures_basic[2])
+                    "t_dhw": self.parse_ecoforest_float(temperatures_basic[0]),
+                },
+                "power": {
+                    "power_heating": self.parse_ecoforest_int(power[17]),
+                    "power_cooling": self.parse_ecoforest_int(power_cooling[0]),
+                    "power_electric": self.parse_ecoforest_int(power[16]),
                 }
-
             }
         )
 
@@ -56,6 +65,12 @@ class EcoGeoApi(EcoforestApi):
 
     async def _t_basic(self) -> list:
         return await self._request(data={"idOperacion": API_BASIC_TEMPERATURES.op, "dir": API_BASIC_TEMPERATURES.start, "num": API_BASIC_TEMPERATURES.number})
+
+    async def _power(self) -> list:
+        return await self._request(data={"idOperacion": API_POWER.op, "dir": API_POWER.start, "num": API_POWER.number})
+
+    async def _power_cooling(self) -> list:
+        return await self._request(data={"idOperacion": API_POWER_COOLING.op, "dir": API_POWER_COOLING.start, "num": API_POWER_COOLING.number})
 
     def _parse(self, response: str) -> dict[str, str]:
         lines = response.split('\n')
