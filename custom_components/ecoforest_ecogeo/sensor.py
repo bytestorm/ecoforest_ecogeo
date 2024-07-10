@@ -91,6 +91,13 @@ SENSOR_TYPES: tuple[EcoforestSensorEntityDescription, ...] = (
         device_class=SensorDeviceClass.POWER,
         value_fn=lambda data: data.power_electric,
     ),
+    EcoforestSensorEntityDescription(
+        key="power_output",
+        translation_key="power_output",
+        native_unit_of_measurement=UnitOfPower.WATT,
+        device_class=SensorDeviceClass.POWER,
+        value_fn=lambda data: data.power_cooling + data.power_heating,
+    ),
 )
 
 

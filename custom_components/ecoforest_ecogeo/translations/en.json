@@ -43,6 +43,9 @@
       },
       "power_electric": {
         "name": "Energy consumption"
+      },
+      "power_output": {
+        "name": "Total output power"
       }
     }
   }
