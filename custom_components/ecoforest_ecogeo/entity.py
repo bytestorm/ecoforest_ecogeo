@@ -23,8 +23,9 @@ class EcoforestEntity(CoordinatorEntity[EcoforestCoordinator]):
     ) -> None:
         """Initialize device information."""
         self.entity_description = description
-        self._attr_unique_id = f"{coordinator.data.serial_number}_{description.key}"
-        self.entity_id = generate_entity_id("sensor.{}", description.key)
+        id = f"{coordinator.data.serial_number}_{description.key}"
+        self._attr_unique_id = id
+        self.entity_id = f"sensor.{id}"
 
         super().__init__(coordinator)
 
