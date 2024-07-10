@@ -16,7 +16,7 @@ class ApiRequest:
 
 API_SERIAL = ApiRequest("2002", 5323, 6)
 API_TANK_TEMPERATURES = ApiRequest("2002", 200, 2)
-BASIC_TEMPERATURES = ApiRequest("2002", 8, 3)
+API_BASIC_TEMPERATURES = ApiRequest("2002", 8, 3)
 
 
 class EcoGeoApi(EcoforestApi):
@@ -50,6 +50,12 @@ class EcoGeoApi(EcoforestApi):
     async def _serial(self) -> str:
         response = await self._request(data={"idOperacion": API_SERIAL.op, "dir": API_SERIAL.start, "num": API_SERIAL.number})
         return self.parse_serial_number(response)
+
+    async def _t_tanks(self) -> list:
+        return await self._request(data={"idOperacion": API_TANK_TEMPERATURES.op, "dir": API_TANK_TEMPERATURES.start, "num": API_TANK_TEMPERATURES.number})
+
+    async def _t_basic(self) -> list:
+        return await self._request(data={"idOperacion": API_BASIC_TEMPERATURES.op, "dir": API_BASIC_TEMPERATURES.start, "num": API_BASIC_TEMPERATURES.number})
 
     def _parse(self, response: str) -> dict[str, str]:
         lines = response.split('\n')
