@@ -31,19 +31,19 @@ SWITCH_TYPES: tuple[EcoforestSwitchEntityDescription, ...] = (
         key="switch_heating",
         name="switch_heating",
         value_fn=lambda data: data.switch_heating,
-        switch_fn=lambda api, status: api.turn_switch(status),
+        switch_fn=lambda api, status: api.turn_switch("heating", status),
     ),
     EcoforestSwitchEntityDescription(
         key="switch_dhw",
         name="switch_dhw",
         value_fn=lambda data: data.switch_dhw,
-        switch_fn=lambda api, status: api.turn_switch(status),
+        switch_fn=lambda api, status: api.turn_switch("dhw", status),
     ),
     EcoforestSwitchEntityDescription(
         key="switch_cooling",
         name="switch_cooling",
         value_fn=lambda data: data.switch_cooling,
-        switch_fn=lambda api, status: api.turn_switch(status),
+        switch_fn=lambda api, status: api.turn_switch("cooling", status),
     ),
 )
 
