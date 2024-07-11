@@ -84,7 +84,7 @@ class EcoGeoApi(EcoforestApi):
         lines = response.split('\n')
 
         a, b = lines[0].split('=')
-        if a != "error_geo_get_reg" or b != "0":
+        if (a != "error_geo_get_reg" and a != "error_geo_get_bit") or b != "0":
             raise Exception("bad response: {}".format(response))
 
         return lines[1].split('&')[2:]
