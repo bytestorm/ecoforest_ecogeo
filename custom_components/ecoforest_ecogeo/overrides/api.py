@@ -19,7 +19,7 @@ API_TANK_TEMPERATURES = ApiRequest("2002", 200, 2)
 API_BASIC_TEMPERATURES = ApiRequest("2002", 8, 4)
 API_POWER = ApiRequest("2002", 5066, 18)
 API_POWER_COOLING = ApiRequest("2002", 5185, 1)
-
+API_SWITCHES = ApiRequest("2001", 105, 3)  # heating, dhw, cooling
 
 
 class EcoGeoApi(EcoforestApi):
@@ -33,15 +33,18 @@ class EcoGeoApi(EcoforestApi):
 
     async def get(self) -> EcoGeoDevice:
         """Retrieve ecoforest information from api."""
-        serial = await self._serial()
-        temperatures_tanks = await self._t_tanks()
-        temperatures_basic = await self._t_basic()
-        power = await self._power()
-        power_cooling = await self._power_cooling()
+        serial = await self._load_registers(API_SERIAL)
+        temperatures_tanks = await self._load_registers(API_TANK_TEMPERATURES)
+        temperatures_basic = await self._load_registers(API_BASIC_TEMPERATURES)
+        power = await self._load_registers(API_POWER)
+        power_cooling = await self._load_registers(API_POWER_COOLING)
+        switches = await self._load_registers(API_SWITCHES)
 
         return EcoGeoDevice.build(
             {
-                "serial": {"value": serial},
+                "serial": {
+                    "value": self.parse_serial_number(serial)
+                },
                 "temperatures": {
                     "t_outdoor": self.parse_ecoforest_float(temperatures_basic[3]),
                     "t_heating": self.parse_ecoforest_float(temperatures_tanks[0]),
@@ -52,27 +55,25 @@ class EcoGeoApi(EcoforestApi):
                     "power_heating": self.parse_ecoforest_int(power[17]),
                     "power_cooling": self.parse_ecoforest_int(power_cooling[0]),
                     "power_electric": self.parse_ecoforest_int(power[16]),
+                },
+                "switches": {
+                    "switch_heating": self.parse_ecoforest_bool(switches[0]),
+                    "switch_dhw": self.parse_ecoforest_bool(switches[1]),
+                    "switch_cooling": self.parse_ecoforest_bool(switches[2])
                 }
             }
         )
 
-    async def _serial(self) -> str:
-        response = await self._request(data={"idOperacion": API_SERIAL.op, "dir": API_SERIAL.start, "num": API_SERIAL.number})
-        return self.parse_serial_number(response)
+    async def _load_registers(self, request_description) -> list[str]:
+        return await self._request(
+            data={
+                "idOperacion": request_description.op,
+                "dir": request_description.start,
+                "num": request_description.number
+            }
+        )
 
-    async def _t_tanks(self) -> list:
-        return await self._request(data={"idOperacion": API_TANK_TEMPERATURES.op, "dir": API_TANK_TEMPERATURES.start, "num": API_TANK_TEMPERATURES.number})
-
-    async def _t_basic(self) -> list:
-        return await self._request(data={"idOperacion": API_BASIC_TEMPERATURES.op, "dir": API_BASIC_TEMPERATURES.start, "num": API_BASIC_TEMPERATURES.number})
-
-    async def _power(self) -> list:
-        return await self._request(data={"idOperacion": API_POWER.op, "dir": API_POWER.start, "num": API_POWER.number})
-
-    async def _power_cooling(self) -> list:
-        return await self._request(data={"idOperacion": API_POWER_COOLING.op, "dir": API_POWER_COOLING.start, "num": API_POWER_COOLING.number})
-
-    def _parse(self, response: str) -> dict[str, str]:
+    def _parse(self, response: str) -> list[str]:
         lines = response.split('\n')
 
         a, b = lines[0].split('=')
@@ -88,6 +89,9 @@ class EcoGeoApi(EcoforestApi):
     def parse_ecoforest_int(self, value):
         result = int(value, 16)
         return result if result <= 32768 else result - 65536
+
+    def parse_ecoforest_bool(self, value):
+        return bool(value)
 
     def parse_ecoforest_float(self, value):
         return self.parse_ecoforest_int(value) / 10

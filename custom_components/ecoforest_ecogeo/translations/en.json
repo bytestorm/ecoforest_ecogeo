@@ -47,6 +47,17 @@
       "power_output": {
         "name": "Total output power"
       }
+    },
+    "switch": {
+      "switch_heating": {
+        "name": "Heating enabled"
+      },
+      "switch_cooling": {
+        "name": "Cooling enabled"
+      },
+      "switch_dhw": {
+        "name": "DHW enabled"
+      }
     }
   }
 }
