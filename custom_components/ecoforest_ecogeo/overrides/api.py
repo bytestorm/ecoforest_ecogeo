@@ -73,6 +73,13 @@ class EcoGeoApi(EcoforestApi):
             }
         )
 
+    async def turn_switch(self, register, on: bool | None = False) -> EcoGeoDevice:
+        """Turn device on and off."""
+        #await self._request(
+        #    data={"idOperacion": API_SET_STATE_OP, "on_off": 1 if on else 0}
+        #)
+        return await self.get()
+
     def _parse(self, response: str) -> list[str]:
         lines = response.split('\n')
 
