@@ -1,10 +1,12 @@
-import string
+import string, logging
 from dataclasses import dataclass
 
 import httpx
 from pyecoforest.api import EcoforestApi
 
 from custom_components.ecoforest_ecogeo.overrides.device import EcoGeoDevice
+
+_LOGGER = logging.getLogger(__name__)
 
 
 @dataclass
@@ -65,7 +67,7 @@ class EcoGeoApi(EcoforestApi):
         )
 
     async def _load_registers(self, request_description) -> list[str]:
-        return await self._request(
+        result = await self._request(
             data={
                 "idOperacion": request_description.op,
                 "dir": request_description.start,
@@ -73,11 +75,22 @@ class EcoGeoApi(EcoforestApi):
             }
         )
 
-    async def turn_switch(self, register, on: bool | None = False) -> EcoGeoDevice:
-        """Turn device on and off."""
-        #await self._request(
-        #    data={"idOperacion": API_SET_STATE_OP, "on_off": 1 if on else 0}
-        #)
+        return result
+
+    async def turn_switch(self, name, on: bool | None = False) -> EcoGeoDevice:
+        match name:
+            case "heating":
+                register = 105
+            case "dhw":
+                register = 106
+            case "cooling":
+                register = 107
+            case _:
+                raise Exception("unknown switch")
+
+        await self._request(
+            data={"idOperacion": 2011, "dir": register, int(on): int(on)}
+        )
         return await self.get()
 
     def _parse(self, response: str) -> list[str]:
@@ -98,7 +111,7 @@ class EcoGeoApi(EcoforestApi):
         return result if result <= 32768 else result - 65536
 
     def parse_ecoforest_bool(self, value):
-        return bool(value)
+        return bool(int(value))
 
     def parse_ecoforest_float(self, value):
         return self.parse_ecoforest_int(value) / 10
