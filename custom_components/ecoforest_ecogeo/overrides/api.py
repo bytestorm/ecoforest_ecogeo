@@ -89,7 +89,7 @@ class EcoGeoApi(EcoforestApi):
                 raise Exception("unknown switch")
 
         await self._request(
-            data={"idOperacion": 2011, "dir": register, int(on): int(on)}
+            data={"idOperacion": 2011, "dir": register, "num": 1, int(on): int(on)}
         )
         return await self.get()
 
@@ -97,7 +97,7 @@ class EcoGeoApi(EcoforestApi):
         lines = response.split('\n')
 
         a, b = lines[0].split('=')
-        if (a != "error_geo_get_reg" and a != "error_geo_get_bit") or b != "0":
+        if a not in ["error_geo_get_reg", "error_geo_get_bit", "error_geo_set_bit"] or b != "0":
             raise Exception("bad response: {}".format(response))
 
         return lines[1].split('&')[2:]
