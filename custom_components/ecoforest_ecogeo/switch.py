@@ -16,6 +16,7 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from .const import DOMAIN
 from .coordinator import EcoforestCoordinator
 from .entity import EcoforestEntity
+from .overrides.api import MAPPING
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -24,28 +25,6 @@ class EcoforestSwitchEntityDescription(SwitchEntityDescription):
 
     value_fn: Callable[[Device], bool]
     switch_fn: Callable[[EcoforestApi, bool], Awaitable[Device]]
-
-
-SWITCH_TYPES: tuple[EcoforestSwitchEntityDescription, ...] = (
-    EcoforestSwitchEntityDescription(
-        key="switch_heating",
-        translation_key="switch_heating",
-        value_fn=lambda data: data.switch_heating,
-        switch_fn=lambda api, status: api.turn_switch("heating", status),
-    ),
-    EcoforestSwitchEntityDescription(
-        key="switch_dhw",
-        translation_key="switch_dhw",
-        value_fn=lambda data: data.switch_dhw,
-        switch_fn=lambda api, status: api.turn_switch("dhw", status),
-    ),
-    EcoforestSwitchEntityDescription(
-        key="switch_cooling",
-        translation_key="switch_cooling",
-        value_fn=lambda data: data.switch_cooling,
-        switch_fn=lambda api, status: api.turn_switch("cooling", status),
-    ),
-)
 
 
 async def async_setup_entry(
@@ -57,7 +36,7 @@ async def async_setup_entry(
     coordinator: EcoforestCoordinator = hass.data[DOMAIN][config_entry.entry_id]
 
     entities = [
-        EcoforestSwitchEntity(coordinator, description) for description in SWITCH_TYPES
+        EcoforestSwitchEntity(coordinator, key, definition) for key, definition in MAPPING.items() if definition["entity_type"] == "switch"
     ]
 
     async_add_entities(entities)
@@ -71,14 +50,14 @@ class EcoforestSwitchEntity(EcoforestEntity, SwitchEntity):
     @property
     def is_on(self) -> bool:
         """Return the state of the ecoforest device."""
-        return self.entity_description.value_fn(self.data)
+        return self.data.state[self.entity_description.key]
 
     async def async_turn_on(self):
         """Turn on the ecoforest device."""
-        await self.entity_description.switch_fn(self.coordinator.api, True)
+        await self.coordinator.api.turn_switch(self.entity_description.key, True)
         await self.coordinator.async_request_refresh()
 
     async def async_turn_off(self):
         """Turn off the ecoforest device."""
-        await self.entity_description.switch_fn(self.coordinator.api, False)
+        await self.coordinator.api.turn_switch(self.entity_description.key, False)
         await self.coordinator.async_request_refresh()

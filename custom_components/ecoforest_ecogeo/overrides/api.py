@@ -8,20 +8,79 @@ from custom_components.ecoforest_ecogeo.overrides.device import EcoGeoDevice
 
 _LOGGER = logging.getLogger(__name__)
 
+SERIAL_ADDRESS = 5323
+SERIAL_LENGTH = 6
 
-@dataclass
-class ApiRequest:
-    op: str
-    start: int
-    number: int
+OP_TYPE_GET_SWITCH = 2001
+OP_TYPE_GET_REGISTER = 2002
+OP_TYPE_SET = 2011
 
+REQUESTS = [
+    {"address": 8, "length": 4, "op": OP_TYPE_GET_REGISTER},
+    {"address": 105, "length": 3, "op": OP_TYPE_GET_SWITCH},
+    {"address": 200, "length": 2, "op": OP_TYPE_GET_REGISTER},
+    {"address": 5066, "length": 18, "op": OP_TYPE_GET_REGISTER},
+    {"address": 5185, "length": 1, "op": OP_TYPE_GET_REGISTER},
+    {"address": SERIAL_ADDRESS, "length": SERIAL_LENGTH, "op": OP_TYPE_GET_REGISTER},
+]
 
-API_SERIAL = ApiRequest("2002", 5323, 6)
-API_TANK_TEMPERATURES = ApiRequest("2002", 200, 2)
-API_BASIC_TEMPERATURES = ApiRequest("2002", 8, 4)
-API_POWER = ApiRequest("2002", 5066, 18)
-API_POWER_COOLING = ApiRequest("2002", 5185, 1)
-API_SWITCHES = ApiRequest("2001", 105, 3)  # heating, dhw, cooling
+MAPPING = {
+    "t_heating": {
+        "type": "float",
+        "address": 200,
+        "entity_type": "temperature"
+    },
+    "t_cooling": {
+        "type": "float",
+        "address": 201,
+        "entity_type": "temperature"
+    },
+    "t_dhw": {
+        "type": "float",
+        "address": 8,
+        "entity_type": "temperature"
+    },
+    "t_outdoor": {
+        "type": "float",
+        "address": 11,
+        "entity_type": "temperature"
+    },
+    "power_heating": {
+        "type": "int",
+        "address": 5083,
+        "entity_type": "power"
+    },
+    "power_cooling": {
+        "type": "int",
+        "address": 5185,
+        "entity_type": "power"
+    },
+    "power_electric": {
+        "type": "int",
+        "address": 5082,
+        "entity_type": "power"
+    },
+    "power_output": {
+        "type": "custom",
+        "entity_type": "power",
+        "value_fn": lambda data: data["power_cooling"] + data["power_heating"]
+    },
+    "switch_heating": {
+        "type": "boolean",
+        "address": 105,
+        "entity_type": "switch"
+    },
+    "switch_cooling": {
+        "type": "boolean",
+        "address": 107,
+        "entity_type": "switch"
+    },
+    "switch_dhw": {
+        "type": "boolean",
+        "address": 106,
+        "entity_type": "switch"
+    },
+}
 
 
 class EcoGeoApi(EcoforestApi):
@@ -34,62 +93,59 @@ class EcoGeoApi(EcoforestApi):
         super().__init__(host, httpx.BasicAuth(user, password))
 
     async def get(self) -> EcoGeoDevice:
-        """Retrieve ecoforest information from api."""
-        serial = await self._load_registers(API_SERIAL)
-        temperatures_tanks = await self._load_registers(API_TANK_TEMPERATURES)
-        temperatures_basic = await self._load_registers(API_BASIC_TEMPERATURES)
-        power = await self._load_registers(API_POWER)
-        power_cooling = await self._load_registers(API_POWER_COOLING)
-        switches = await self._load_registers(API_SWITCHES)
+        state = {}
+        for request in REQUESTS:
+            state.update(await self._load_data(request["address"], request["length"], request["op"]))
 
-        return EcoGeoDevice.build(
-            {
-                "serial": {
-                    "value": self.parse_serial_number(serial)
-                },
-                "temperatures": {
-                    "t_outdoor": self.parse_ecoforest_float(temperatures_basic[3]),
-                    "t_heating": self.parse_ecoforest_float(temperatures_tanks[0]),
-                    "t_cooling": self.parse_ecoforest_float(temperatures_tanks[1]),
-                    "t_dhw": self.parse_ecoforest_float(temperatures_basic[0]),
-                },
-                "power": {
-                    "power_heating": self.parse_ecoforest_int(power[17]),
-                    "power_cooling": self.parse_ecoforest_int(power_cooling[0]),
-                    "power_electric": self.parse_ecoforest_int(power[16]),
-                },
-                "switches": {
-                    "switch_heating": self.parse_ecoforest_bool(switches[0]),
-                    "switch_dhw": self.parse_ecoforest_bool(switches[1]),
-                    "switch_cooling": self.parse_ecoforest_bool(switches[2])
-                }
-            }
-        )
+        device_info = {}
+        for name, definition in MAPPING.items():
+            match definition["type"]:
+                case "int":
+                    value = self.parse_ecoforest_int(state[definition["address"]])
+                case "float":
+                    value = self.parse_ecoforest_float(state[definition["address"]])
+                case "boolean":
+                    value = self.parse_ecoforest_bool(state[definition["address"]])
+                case "custom":
+                    continue
+                case _:
+                    _LOGGER.error("unknown entity type for %s", name)
+                    continue
 
-    async def _load_registers(self, request_description) -> list[str]:
-        result = await self._request(
+            device_info[name] = value
+
+        for name, definition in MAPPING.items():
+            if definition["type"] != "custom":
+                continue
+            device_info[name] = definition["value_fn"](device_info)
+
+        _LOGGER.error(device_info)
+        _LOGGER.error(state)
+        return EcoGeoDevice.build(self.parse_serial_number(state), device_info)
+
+    async def _load_data(self, address, length, op_type) -> dict[int, str]:
+        response = await self._request(
             data={
-                "idOperacion": request_description.op,
-                "dir": request_description.start,
-                "num": request_description.number
+                "idOperacion": op_type,
+                "dir": address,
+                "num": length
             }
         )
+
+        result = {}
+        index = 0
+        for i in range(address, address+length):
+            result[i] = response[index]
+            index += 1
 
         return result
 
     async def turn_switch(self, name, on: bool | None = False) -> EcoGeoDevice:
-        match name:
-            case "heating":
-                register = 105
-            case "dhw":
-                register = 106
-            case "cooling":
-                register = 107
-            case _:
-                raise Exception("unknown switch")
+        if name not in MAPPING.keys():
+            raise Exception("unknown switch")
 
         await self._request(
-            data={"idOperacion": 2011, "dir": register, "num": 1, int(on): int(on)}
+            data={"idOperacion": OP_TYPE_SET, "dir": MAPPING[name]["address"], "num": 1, int(on): int(on)}
         )
         return await self.get()
 
@@ -104,7 +160,12 @@ class EcoGeoApi(EcoforestApi):
 
     def parse_serial_number(self, data):
         serial_dictionary = ["--"] + [*string.digits] + [*string.ascii_uppercase]
-        return ''.join([serial_dictionary[self.parse_ecoforest_int(x)] for x in data])
+
+        result = ''
+        for address in range(SERIAL_ADDRESS, SERIAL_ADDRESS+SERIAL_LENGTH):
+            result += serial_dictionary[self.parse_ecoforest_int(data[address])]
+
+        return result
 
     def parse_ecoforest_int(self, value):
         result = int(value, 16)
