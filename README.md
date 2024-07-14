@@ -1,12 +1,14 @@
 Ecoforest EcoGeo heat pump integration PoC WIP
 
+To install this integration, add this GitHub Repo to the HACS Custom Repositories
+
+Custom Power Flow card for visualization:
+
 ![flow](https://github.com/bytestorm/ecoforest_ecogeo/blob/master/flow.png?raw=true)
 
 ```yaml
 type: custom:power-flow-card-plus
 entities:
-  battery:
-    state_of_charge: sensor.solarman_battery_soc
   grid:
     entity: sensor.ebfhbb_power_electric
     display_state: one_way_no_zero
@@ -16,8 +18,6 @@ entities:
         - 78
         - 122
         - 39
-  solar:
-    display_zero_state: true
   home:
     entity: sensor.ebfhbb_power_output
     icon: mdi:hvac
