@@ -40,9 +40,14 @@ MAPPING = {
         "address": 8,
         "entity_type": "temperature"
     },
-    "t_dg1": {
+    "t_dg1_h": {
         "type": "float",
-        "address": 200,
+        "address": 3,
+        "entity_type": "temperature"
+    },
+    "t_dg1_c": {
+        "type": "float",
+        "address": 197,
         "entity_type": "temperature"
     },
     "t_sg2": {
