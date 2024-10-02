@@ -16,7 +16,7 @@ OP_TYPE_GET_REGISTER = 2002
 OP_TYPE_SET = 2011
 
 REQUESTS = [
-    {"address": 8, "length": 4, "op": OP_TYPE_GET_REGISTER},
+    {"address": 3, "length": 9, "op": OP_TYPE_GET_REGISTER},
     {"address": 105, "length": 3, "op": OP_TYPE_GET_SWITCH},
     {"address": 194, "length": 8, "op": OP_TYPE_GET_REGISTER},
     {"address": 5066, "length": 18, "op": OP_TYPE_GET_REGISTER},
