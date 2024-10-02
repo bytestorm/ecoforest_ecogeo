@@ -18,7 +18,7 @@ OP_TYPE_SET = 2011
 REQUESTS = [
     {"address": 8, "length": 4, "op": OP_TYPE_GET_REGISTER},
     {"address": 105, "length": 3, "op": OP_TYPE_GET_SWITCH},
-    {"address": 200, "length": 2, "op": OP_TYPE_GET_REGISTER},
+    {"address": 194, "length": 8, "op": OP_TYPE_GET_REGISTER},
     {"address": 5066, "length": 18, "op": OP_TYPE_GET_REGISTER},
     {"address": 5185, "length": 1, "op": OP_TYPE_GET_REGISTER},
     {"address": SERIAL_ADDRESS, "length": SERIAL_LENGTH, "op": OP_TYPE_GET_REGISTER},
@@ -38,6 +38,26 @@ MAPPING = {
     "t_dhw": {
         "type": "float",
         "address": 8,
+        "entity_type": "temperature"
+    },
+    "t_dg1": {
+        "type": "float",
+        "address": 200,
+        "entity_type": "temperature"
+    },
+    "t_sg2": {
+        "type": "float",
+        "address": 194,
+        "entity_type": "temperature"
+    },
+    "t_sg3": {
+        "type": "float",
+        "address": 195,
+        "entity_type": "temperature"
+    },
+    "t_sg4": {
+        "type": "float",
+        "address": 196,
         "entity_type": "temperature"
     },
     "t_outdoor": {
