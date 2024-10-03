@@ -140,6 +140,10 @@ class EcoGeoApi(EcoforestApi):
             device_info[name] = value
 
         for name, definition in MAPPING.items():
+            if definition["entity_type"] == "temperature":
+                if device_info[name] == -999.9:
+                    device_info[name] = None
+
             if definition["type"] != "custom":
                 continue
             device_info[name] = definition["value_fn"](device_info)
