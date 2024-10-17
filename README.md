@@ -1,6 +1,9 @@
-Ecoforest EcoGeo heat pump integration PoC WIP
+Ecoforest EcoGeo heat pump integration PoC
 
-To install this integration, add this GitHub Repo to the HACS Custom Repositories
+To install this integration, add this GitHub Repo to the HACS Custom Repositories or use the button below
+
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=bytestorm&repository=ecoforest_ecogeo&category=integration)
+
 
 Custom Power Flow card for visualization:
 
