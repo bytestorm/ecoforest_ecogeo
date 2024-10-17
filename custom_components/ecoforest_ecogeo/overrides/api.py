@@ -8,8 +8,8 @@ from custom_components.ecoforest_ecogeo.overrides.device import EcoGeoDevice
 
 _LOGGER = logging.getLogger(__name__)
 
-SERIAL_ADDRESS = 5323
-SERIAL_LENGTH = 6
+MODEL_ADDRESS = 5323
+MODEL_LENGTH = 6
 
 OP_TYPE_GET_SWITCH = 2001
 OP_TYPE_GET_REGISTER = 2002
@@ -21,7 +21,7 @@ REQUESTS = [
     {"address": 194, "length": 8, "op": OP_TYPE_GET_REGISTER},
     {"address": 5066, "length": 18, "op": OP_TYPE_GET_REGISTER},
     {"address": 5185, "length": 1, "op": OP_TYPE_GET_REGISTER},
-    {"address": SERIAL_ADDRESS, "length": SERIAL_LENGTH, "op": OP_TYPE_GET_REGISTER},
+    {"address": MODEL_ADDRESS, "length": MODEL_LENGTH, "op": OP_TYPE_GET_REGISTER},
 ]
 
 MAPPING = {
@@ -148,9 +148,9 @@ class EcoGeoApi(EcoforestApi):
                 continue
             device_info[name] = definition["value_fn"](device_info)
 
-        _LOGGER.error(device_info)
-        _LOGGER.error(state)
-        return EcoGeoDevice.build(self.parse_serial_number(state), device_info)
+        _LOGGER.debug(device_info)
+        _LOGGER.debug(state)
+        return EcoGeoDevice.build(self.parse_model_name(state), device_info)
 
     async def _load_data(self, address, length, op_type) -> dict[int, str]:
         response = await self._request(
@@ -187,12 +187,12 @@ class EcoGeoApi(EcoforestApi):
 
         return lines[1].split('&')[2:]
 
-    def parse_serial_number(self, data):
-        serial_dictionary = ["--"] + [*string.digits] + [*string.ascii_uppercase]
+    def parse_model_name(self, data):
+        model_dictionary = ["--"] + [*string.digits] + [*string.ascii_uppercase]
 
         result = ''
-        for address in range(SERIAL_ADDRESS, SERIAL_ADDRESS+SERIAL_LENGTH):
-            result += serial_dictionary[self.parse_ecoforest_int(data[address])]
+        for address in range(MODEL_ADDRESS, MODEL_ADDRESS + MODEL_LENGTH):
+            result += model_dictionary[self.parse_ecoforest_int(data[address])]
 
         return result
 

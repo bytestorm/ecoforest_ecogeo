@@ -5,6 +5,7 @@ from __future__ import annotations
 from collections.abc import Awaitable, Callable
 from dataclasses import dataclass
 
+from homeassistant.const import CONF_ALIAS
 from pyecoforest.api import EcoforestApi
 from pyecoforest.models.device import Device
 
@@ -35,8 +36,9 @@ async def async_setup_entry(
     """Set up Ecoforest switch platform."""
     coordinator: EcoforestCoordinator = hass.data[DOMAIN][config_entry.entry_id]
 
+    device_alias = config_entry.data[CONF_ALIAS] if CONF_ALIAS in config_entry.data else None
     entities = [
-        EcoforestSwitchEntity(coordinator, key, definition) for key, definition in MAPPING.items() if definition["entity_type"] == "switch"
+        EcoforestSwitchEntity(coordinator, key, definition, device_alias) for key, definition in MAPPING.items() if definition["entity_type"] == "switch"
     ]
 
     async_add_entities(entities)

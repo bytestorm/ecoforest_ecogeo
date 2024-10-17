@@ -38,7 +38,8 @@ class EcoforestEntity(CoordinatorEntity[EcoforestCoordinator]):
         self,
         coordinator: EcoforestCoordinator,
         key: str,
-        definition: dict[str, str]
+        definition: dict[str, str],
+        device_alias: str
     ) -> None:
         """Initialize device information."""
 
@@ -55,8 +56,8 @@ class EcoforestEntity(CoordinatorEntity[EcoforestCoordinator]):
                 translation_key=key
             )
 
-
-        id = f"{coordinator.data.serial_number}_{key}"
+        device_id = coordinator.data.model_name if device_alias is None else device_alias
+        id = f"{device_id}_{key}"
         self._attr_unique_id = id
         self.entity_id = f"sensor.{id}"
 
@@ -64,10 +65,9 @@ class EcoforestEntity(CoordinatorEntity[EcoforestCoordinator]):
 
 
         self._attr_device_info = DeviceInfo(
-            identifiers={(DOMAIN, coordinator.data.serial_number)},
+            identifiers={(DOMAIN, device_id)},
             name=MANUFACTURER,
             model=coordinator.data.model_name,
-            sw_version=coordinator.data.firmware,
             manufacturer=MANUFACTURER,
         )
 

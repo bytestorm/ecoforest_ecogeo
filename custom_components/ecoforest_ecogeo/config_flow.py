@@ -9,7 +9,7 @@ from pyecoforest.exceptions import EcoforestAuthenticationRequired
 import voluptuous as vol
 
 from homeassistant.config_entries import ConfigFlow, ConfigFlowResult
-from homeassistant.const import CONF_HOST, CONF_PASSWORD, CONF_USERNAME
+from homeassistant.const import CONF_HOST, CONF_PASSWORD, CONF_USERNAME, CONF_ALIAS
 
 from .const import DOMAIN, MANUFACTURER
 from .overrides.api import EcoGeoApi
@@ -21,6 +21,7 @@ STEP_USER_DATA_SCHEMA = vol.Schema(
         vol.Required(CONF_HOST): str,
         vol.Required(CONF_USERNAME): str,
         vol.Required(CONF_PASSWORD): str,
+        vol.Optional(CONF_ALIAS): str,
     }
 )
 
@@ -50,10 +51,19 @@ class EcoForestEcoGeoConfigFlow(ConfigFlow, domain=DOMAIN):
                 _LOGGER.exception("Unexpected exception")
                 errors["base"] = "cannot_connect"
             else:
-                await self.async_set_unique_id(device.serial_number)
+                device_id = device.model_name
+                title = f"{MANUFACTURER} {device.model_name}"
+
+                if CONF_ALIAS in user_input:
+                    device_id = user_input[CONF_ALIAS]
+                    title = f"{title} ({user_input[CONF_ALIAS]})"
+
+                await self.async_set_unique_id(device_id)
                 self._abort_if_unique_id_configured()
+
                 return self.async_create_entry(
-                    title=f"{MANUFACTURER} {device.serial_number}", data=user_input
+                    title=title,
+                    data=user_input
                 )
 
         return self.async_show_form(

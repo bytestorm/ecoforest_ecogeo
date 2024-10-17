@@ -1,0 +1,514 @@
+Type,BMS Address,Description,Units,Range - min,Range - max,R / W,Remarks
+Analog,1,Supply temperature (Air/Ground),°C,-,-,R,Depending on source type
+Analog,2,Inlet temperature Ground,°C,-,-,R,
+Analog,3,Heating temperature Out,°C,-,-,R,
+Analog,4,Heating temperature In,°C,-,-,R,
+Analog,5,Compressor suction temperature,°C,-,-,R,
+Analog,6,Compressor suction pressure (low pressure),bar,-,-,R,
+Analog,7,Compressor discharge pressure (high pressure),bar,-,-,R,
+Analog,8,DHW temperature,°C,-,-,R,
+Analog,9,Airunit speed,%,-,-,R,
+Analog,11,Outside temperature,°C,-,-,R,
+Analog,12,Recirculation temperature,°C,-,-,R,Depending on installation register might be used by recirculation
+Analog,13,Brine circuit pressure,bar,-,-,R,
+Analog,14,Heating circuit pressure,bar,-,-,R,
+Analog,15,DHW ΔT start,°C,2,25,R/W,
+Analog,17,DHW set temperature,°C,0,65,R/W,
+Analog,19,Pool temperature,°C,15,55,R/W,
+Analog,22,Stop temperature for heating,°C,-99,99,R/W,
+Analog,24,Brine minimum temperature,°C,-25,5,R/W,
+Analog,25,Brine minimum pressure,bar,0.2,1.5,R/W,
+Analog,26,Production minimum pressure,bar,0.2,1.5,R/W,
+Analog,29,Inlet temperature air unit ,°C,-,-,R,
+Analog,30,Compressor COP,-,-,-,R,
+Analog,31,Compressor PF,-,-,-,R,
+Analog,34,DG 1 Supply temperature heat curve bottom & maximum outdoor temp,°C,-99.9,99.9,R/W,
+Analog,35,DG 1 Outdoor temperature heat curve bottom,°C,-99.9,99.9,R/W,
+Analog,36,DG 1 Supply temperature heat curve top,°C,20,55,R/W,
+Analog,37,SG 2 Supply temperature heat curve top,°C,0,60,R/W,
+Analog,38,Floor drying  phase 1 temperature,°C,-,-,R,
+Analog,39,Floor drying  phase 2 temperature,°C,-,-,R,
+Analog,40,Floor drying  phase 3 temperature,°C,-,-,R,
+Analog,41,Floor drying  phase 4 temperature,°C,-,-,R,
+Analog,42,Recirculation Set Temperature,°C,0,60,R/W,
+Analog,42,Floor drying  phase 5 temperature,°C,-,-,R,Depending on installation register might be used by recirculation
+Analog,43,Recirculation. ΔT start,°C,0,20,R/W,
+Analog,43,Floor drying  phase 6 temperature,°C,-,-,R,Depending on installation register might be used by recirculation
+Analog,46,Aerothermal stop temperature,°C,2,20,R/W,
+Analog,47,Geothermal protection minimum temperature,°C,-10,10,R/W,
+Analog,50,Cooling - ΔT dew opoint,°C,-10,10,R/W,
+Analog,54,DG 1 Supply Temparature Fixed Temp Cool,°C,7,55,R/W,
+Analog,55,Cooling buffer ΔT start,°C,0,99.9,R/W,
+Analog,58,Heating buffer ΔT start,°C,0,10,R/W,
+Analog,59,DHW Set HTR temperature,°C,0,70,R/W,
+Analog,60,SG 2 Supply Temparature Fixed Temp Heating,°C,0,55,R/W,
+Analog,61,SG 2 Outdoor Temperature Heat Curve Left,°C,-99.9,99.9,R/W,
+Analog,63,DG 1 Supply Temperature Cool Curve Top,°C,7,55,R/W,
+Analog,64,DG 1 Supply Temperature Cool Curve Bottom,°C,7,55,R/W,
+Analog,65,DG 1 Outdoor Temperature Cool Curve Left,°C,-99.9,99.9,R/W,
+Analog,66,DG 1 Outdoor Temperature Cool Curve Right,°C,-99.9,99.9,R/W,
+Analog,67,SG 2 Supply Temperature Cool Curve Top,°C,7,55,R/W,
+Analog,68,SG 2 Supply Temparature Fixed Temp Cool,°C,7,55,R/W,
+Analog,69,SG 2 Supply Temperature Cool Curve Bottom,°C,7,55,R/W,
+Analog,70,SG 2 Outdoor Temperature Cool Curve Left,°C,-99.9,99.9,R/W,
+Analog,71,SG 2 Outdoor Temperature Cool Curve Right,°C,-99.9,99.9,R/W,
+Analog,72,Antilegionela setpoint,°C,60,75,R/W,
+Analog,73,DG 1 Supply Temparature Fixed Temp Heating,°C,0,55,R/W,
+Analog,74,Compressor capacity DHW minimum,%,25,100,R/W,
+Analog,75,Compressor capacity DHW maximum,%,25,100,R/W,
+Analog,76,Compressor capacity Heating minimum,%,25,100,R/W,
+Analog,77,Compressor capacity Heating maximum,%,25,100,R/W,
+Analog,78,Compressor capacity Coolig minimum,%,25,100,R/W,
+Analog,79,Compressor capacity Coolig maximum,%,25,100,R/W,
+Analog,80,Compressor capacity Pool minimum,%,25,100,R/W,
+Analog,81,Compressor capacity Pool maximum,%,25,100,R/W,
+Analog,87,Production minimum temperature,°C,4,30,R/W,
+Analog,88,Brine pomp minimum capacity,%,30,100,R/W,
+Analog,89,Brine pomp maximum capacity,%,30,100,R/W,
+Analog,90,Production pomp minimum capcity,%,30,100,R/W,
+Analog,91,Production pomp maximum capcity,%,30,100,R/W,
+Analog,93,SG 3 Supply temperature heat curve top,°C,20,55,R/W,
+Analog,94,Condensation temperature,°C,-,-,R,
+Analog,95,winter/summer switch temperature winter,°C,-99.9,99.9,R/W,
+Analog,96,winter/summer switch temperature summer,°C,-99.9,99.9,R/W,
+Analog,97,Heating set temperature DG 1,°C,-,-,R,
+Analog,98,Cooling set temperature DG 1,°C,-,-,R,
+Analog,99,Cooling set temperature SG 2,°C,-,-,R,
+Analog,102,SG 3 Supply temperature heat curve bottom & maximum outdoor temperature,°C,-99.9,99.9,R/W,
+Analog,103,SG 3 Outdoor temperature heat curve left,°C,-99.9,99.9,R/W,
+Analog,105,SG 3 Supply temperature fixed temperature heating,°C,0,55,R/W,
+Analog,106,SG 4 Supply temperature fixed temperature heating,°C,0,55,R/W,
+Analog,107,SG 3 Supply temperature heat curve top,°C,20,55,R/W,
+Analog,108,SG 4 Supply temperature heat curve bottom & maximum outdoor temperature,°C,-99.9,99.9,R/W,
+Analog,109,SG 4 Outdoor temperature heat curve left,°C,-99.9,99.9,R/W,
+Analog,111,SG 3 Outdoor temperature cool curve left,°C,-99.9,99.9,R/W,
+Analog,112,SG 3 Outdoor temperature cool curve right,°C,-99.9,99.9,R/W,
+Analog,113,SG 3 Supply temperature cool curve top,°C,7,55,R/W,
+Analog,114,SG 3 Supply temperature cool curve bottom,°C,7,55,R/W,
+Analog,115,SG 4 Outdoor temperature cool curve left,°C,-99.9,99.9,R/W,
+Analog,116,SG 4 Outdoor temperature cool curve right,°C,-99.9,99.9,R/W,
+Analog,117,SG 4 Supply temperature cool curve top,°C,7,55,R/W,
+Analog,118,SG 4 Supply temperature cool curve bottom,°C,7,55,R/W,
+Analog,119,SG 3 Supply temperature fixed temperature cooling,°C,-,-,R,Depending on installation register might be used for pool
+Analog,119,Pool set temperature,°C,-,-,R,Depending on installation register might be used for SG 3
+Analog,120,Cooling set temperature SG 3,°C,-,-,R,Depending on installation register might be used for pool
+Analog,120,Pool _T start,°C,-,-,R,Depending on installation register might be used for SG 3
+Analog,122,SG 4 Supply temperature fixed temperature cooling,°C,7,55,R/W,
+Analog,123,Cooling set temperature SG 4,°C,-,-,R,
+Analog,125,Stop Temperature for active cooling,°C,-99,99,R/W,
+Analog,126,Stop Temperature for passive cooling,°C,-99,99,R/W,
+Analog,130,SG3 Set temperature active cooling,°C,-,-,R,
+Analog,132,Super heat,K,-,-,R,
+Analog,133,Expansion valve,%,-,-,R,multiply by 10
+Analog,144,Roomterminal T1 _T start,°C,0.5,2,R/W,
+Analog,145,Roomterminal T2 _T start,°C,0.5,2,R/W,
+Analog,146,Roomterminal T3 _T start,°C,0.5,2,R/W,
+Analog,147,Roomterminal T4 _T start,°C,0.5,2,R/W,
+Analog,148,Aerothermal _T air unit,°C,-99.9,99.9,R/W,
+Analog,150,Roomterminal DG 1 _T S/W on/off,-,2,10,R/W,
+Analog,151,Roomterminal SG 2 _T S/W on/off,-,2,10,R/W,
+Analog,152,Roomterminal SG 3 _T S/W on/off,-,2,10,R/W,
+Analog,153,Roomterminal SG 4 _T S/W on/off,-,2,10,R/W,
+Analog,154,Heating - _T Heating,°C,0,15,R/W,
+Analog,155,Heating - _T Supply,°C,0,15,R/W,
+Analog,156,Cooling - _T Cooling,°C,1,15,R/W,
+Analog,157,Cooling - _T Supply,°C,1,15,R/W,
+Analog,158,Bivalent Parallel,°C,-99.9,99.9,R/W,
+Analog,159,Bivalent _T Start,°C,0,9.9,R/W,
+Analog,160,Bivalent Replacement,°C,-99.9,99.9,R/W,
+Analog,161,Brine maximun temperature,°C,-99.9,99.9,R/W,
+Analog,175,Heatpump night time compressor limitation,%,25,100,R/W,Min and Max rage can vary on HP Model and or Firmware
+Analog,176,Roomterminal DG 1 setpoint temperature,°C,15,30,R/W,
+Analog,177,Roomterminal SG 2 setpoint temperature,°C,15,30,R/W,
+Analog,178,Roomterminal SG 3 setpoint temperature,°C,15,30,R/W,
+Analog,179,Roomterminal SG 4 setpoint temperature,°C,15,30,R/W,
+Analog,182,Ventilator rpm,%,0,100,R/W,
+Analog,184,Captation ΔT source,°C,0,20,R/W,
+Analog,185,Cooling buffer set temperature,°C,-,-,R,
+Analog,186,Roomterminal DG 1 real temperature,°C,-,-,R,
+Analog,187,Roomterminal SG 2 real temperature,°C,-,-,R,
+Analog,188,Roomterminal SG 3 real temperature,°C,-,-,R,
+Analog,189,Roomterminal SG 4 real temperature,°C,-,-,R,
+Analog,190,Roomterminal DG 1 RH,%,-,-,R,
+Analog,191,Roomterminal SG 2 RH,%,-,-,R,
+Analog,192,Roomterminal SG 3 RH,%,-,-,R,
+Analog,193,Roomterminal SG 4 RH,%,-,-,R,
+Analog,194,Heating / Cooling SG 2 real temperature,°C,-,-,R,
+Analog,195,Heating / Cooling SG 3 real temperature,°C,-,-,R,
+Analog,196,Heating / Cooling SG 4 real temperature,°C,-,-,R,
+Analog,197,Cooling DG 1 real temperature,°C,-,-,R,
+Analog,198,DHW start compressor on temperature,°C,-,-,R,
+Analog,199,Evaporation temperature,°C,-,-,R,
+Analog,200,Heating buffer real temperature,°C,-,-,R,
+Analog,201,Cooling buffer real temperature,°C,-,-,R,
+Analog,202,Compressor EER (active cooling),-,-,-,R,
+Analog,203,Compresor discharge temperature,°C,-,-,R,
+Analog,204,Air unit ΔT temperature,°C,-,-,R,
+Analog,267,Manual Test - Boiler,%,0,100,R/W,
+Integer,5002,Compressor RPM,rpm,0,7200,R,
+Integer,5004,Scroll Temp.,°C,-,-,R,According to Official ModbusList
+Integer,5005,Inverter temperature,°C,-,-,R,
+Integer,5024,Heatpump Program Mode,int,0,4,R/W, 0=Winter |  1=Summer |  2=Auto |  3=Mixed |  4=Remote
+Integer,5033,Production Pump,%,200,1000,R/W,/10
+Integer,5034,Source Pump,%,200,1000,R/W,/10
+Integer,5049,DG 1 - Heating Terminal,-,0,2,R/W, 0=vvw |  1=fancoil |  2=radiators
+Integer,5050,SG 2 - Heating Terminal,-,0,2,R/W, 0=vvw |  1=fancoil |  2=radiators
+Integer,5051,DG 1 - Cool Terminal,-,0,2,R/W, 0=vvw |  1=fancoil |  2=radiators
+Integer,5052,SG 2 - Cooling Terminal,-,0,2,R/W, 0=vvw |  1=fancoil |  2=radiators
+Integer,5053,Building Insulation,-,0,2,R/W,0=Good |  1=Bad |  2=Moderate
+Integer,5057,Heatpump Trial Period Days,D,0,365,R/W,
+Integer,5058,Heatpump ON/OFF,-,0,2,R/W,0=OFF| 1=ON |  2=Emergency
+Integer,5060,DHW Legionella treatment TIME,H,0,23,R/W,
+Integer,5065,Heating buffer set temperature,°C,-,-,R,/10
+Integer,5066,Heating set temperature SG 2,°C,-,-,R/W,
+Integer,5067,Pool winter program min per hour,Min,0,60,R/W,
+Integer,5080,Compressor Working Hours L,-,0,65535,R,
+Integer,5081,Compressor Working Hours H,-,0,65535,R,
+Integer,5082,Energy meter - Electric energy compressor,W,0,65535,R,
+Integer,5083,Energy meter - Useful heat power,W,0,65535,R,
+Integer,5090,Manual Test - Source Pump DO1,%,0,1000,R/W,/10
+Integer,5091,Manual Test - Production?Buffer Pump DO2,%,0,1000,R/W,/10
+Integer,5092,Roomterminal SG 3 Interior Compensation _1,-,0,9,R/W,
+Integer,5093,Heatpump current hour,H,0,23,R,
+Integer,5094,Heatpump current minute,Min,0,59,R,
+Integer,5095,Heatpump current day,D,0,31,R,
+Integer,5096,Heatpump current month,M,0,12,R,
+Integer,5097,Heatpump current year,YY,0,99,R,
+Integer,5098,Heatpump set current hour,H,0,23,W,Before altering set COIL 95 to 1
+Integer,5099,Heatpump set current minute,Min,0,59,W,Before altering set COIL 94 to 1
+Integer,5100,Heatpump set current day,D,1,31,W,Before altering set COIL 96 to 1
+Integer,5101,Heatpump set current month,M,1,12,W,Before altering set COIL 97 to 1
+Integer,5102,Heatpump set current year,YY,0,99,W,Before altering set COIL 98 to 1
+Integer,5103,Daylight Savingtime transition time,Min,0,240,R/W,
+Integer,5104,Daylight Savingtime Start on,-,0,4,R/W,0:Last |  1:First |  2:Second |  3:Third |  4:Fourth
+Integer,5105,Daylight Savingtime Start on Day,D,0,7,R/W,0:- | 1:Monday |  2:Tuesday |  3:Wednesday |  4:Thursday |  5:Friday |  6:Saturday |  7: Sunday
+Integer,5106,Daylight Savingtime Start on Month,M,0,12,R/W,0:- Months 1 to 12
+Integer,5107,Daylight Savingtime Start at Hour,H,0,23,R/W,
+Integer,5108,Daylight Savingtime Ends on,-,0,4,R/W,0:Last |  1:First |  2:Second |  3:Third |  4:Fourth
+Integer,5109,Daylight Savingtime Ends on Day,D,0,7,R/W,0:- | 1:Monday |  2:Tuesday |  3:Wednesday |  4:Thursday |  5:Friday |  6:Saturday |  7: Sunday
+Integer,5110,Daylight Savingtime Ends on Month,M,0,12,R/W,0:- Months 1 to 12
+Integer,5111,Daylight Savingtime Ends at Hour,H,0,23,R/W,
+Integer,5112,Roomterminal SG 3 Interior Compensation _2,-,0,99,R/W,
+Integer,5113,Heating set temperature SG 3,°C,-,-,R/W,
+Integer,5114,Roomterminal SG 4 Interior Compensation _1,-,0,9,R/W,
+Integer,5119,Floor drying  phase 1 time,H,0,23,R,
+Integer,5120,Floor drying  phase 2 time,H,0,23,R,
+Integer,5121,Floor drying  phase 3 time,H,0,23,R,
+Integer,5122,Floor drying  phase 4 time,H,0,23,R,
+Integer,5123,Floor drying  phase 5 time,H,0,23,R,
+Integer,5124,Floor drying  phase 6 time,H,0,23,R,
+Integer,5126,Aerothermal Max time,Min,10,60,R/W,
+Integer,5127,Heatpump night time start hour,H,0,23,R/W,
+Integer,5128,Heatpump night time start minutes,Min,0,59,R/W,
+Integer,5129,Heatpump night time end hour,H,0,23,R/W,
+Integer,5130,Heatpump night time end minutes,Min,0,59,R/W,
+Integer,5131,Hybrid system  Captation min Air,%,15,50,R/W,
+Integer,5132,Hybrid system  Captation min Ground,%,15,50,R/W,
+Integer,5133,Pool Connection,-,0,1,R/W,0=Heating system |  1=DHW system
+Integer,5139,DHW Legionella treatment TIME,Min,0,59,R/W,
+Integer,5140,Heating group DG 1 Heat curve +/-,int,0,4,R/W, 0=-4.0°C |  1=-2.0°C | 0=0.0°C | 3=+2.0°C | 4=+4.0°C
+Integer,5141,Heating group SG 2 Heat curve +/-,int,0,4,R/W, 0=-4.0°C |  1=-2.0°C | 0=0.0°C | 3=+2.0°C | 4=+4.0°C
+Integer,5143,Heatpump Source Type,-,0,2,R,0=Geothermal |  1=Aerothermal |  2= Hybrid system
+Integer,5144,Condensation energy-January,-,0,65535,R,
+Integer,5145,Condensation energy-February,-,0,65535,R,
+Integer,5146,Condensation energy-March,-,0,65535,R,
+Integer,5147,Condensation energy-April,-,0,65535,R,
+Integer,5148,Condensation energy-May,-,0,65535,R,
+Integer,5149,Condensation energy-June,-,0,65535,R,
+Integer,5150,Condensation energy-July,-,0,65535,R,
+Integer,5151,Condensation energy-August,-,0,65535,R,
+Integer,5152,Condensation energy-September,-,0,65535,R,
+Integer,5153,Condensation energy-October,-,0,65535,R,
+Integer,5154,Condensation energy-November,-,0,65535,R,
+Integer,5155,Condensation energy-December,-,0,65535,R,
+Integer,5156,Evaporation energy-January,-,0,65535,R,
+Integer,5157,Evaporation energy-February,-,0,65535,R,
+Integer,5158,Evaporation energy-March,-,0,65535,R,
+Integer,5159,Evaporation energy-April,-,0,65535,R,
+Integer,5160,Evaporation energy-May,-,0,65535,R,
+Integer,5161,Evaporation energy-June,-,0,65535,R,
+Integer,5162,Evaporation energy-July,-,0,65535,R,
+Integer,5163,Evaporation energy-August,-,0,65535,R,
+Integer,5164,Evaporation energy-September,-,0,65535,R,
+Integer,5165,Evaporation energy-October,-,0,65535,R,
+Integer,5166,Evaporation energy-November,-,0,65535,R,
+Integer,5167,Evaporation energy-December,-,0,65535,R,
+Integer,5168,Electrical consumption-January,-,0,65535,R,
+Integer,5169,Electrical consumption-February,-,0,65535,R,
+Integer,5170,Electrical consumption-March,-,0,65535,R,
+Integer,5171,Electrical consumption-April,-,0,65535,R,
+Integer,5172,Electrical consumption-May,-,0,65535,R,
+Integer,5173,Electrical consumption-June,-,0,65535,R,
+Integer,5174,Electrical consumption-July,-,0,65535,R,
+Integer,5175,Electrical consumption-August,-,0,65535,R,
+Integer,5176,Electrical consumption-September,-,0,65535,R,
+Integer,5177,Electrical consumption-October,-,0,65535,R,
+Integer,5178,Electrical consumption-November,-,0,65535,R,
+Integer,5179,Electrical consumption-December,-,0,65535,R,
+Integer,5180,winter/zomer switch _time to change in hours,H,0,10,R/W,
+Integer,5181,Roomterminal DG 1 Interior Compensation _1,-,0,9,R/W,
+Integer,5182,Roomterminal DG 1 Interior Compensation _2,-,0,99,R/W,
+Integer,5183,Roomterminal SG 2 Interior Compensation _1,-,0,9,R/W,
+Integer,5184,Roomterminal SG 2 Interior Compensation _2,-,0,99,R/W,
+Integer,5185,Energy meter - Useful cool power,W,0,65535,R,
+Integer,5191,Heatpump Alarm type,-,0,99,R,** Min Max range on Tab Alarms
+Integer,5193,"Heatpump Alarm ""78""",-,-,-,R,
+Integer,5194,"Heatpump Alarm ""79""",-,-,-,R,
+Integer,5195,"Heatpump Alarm ""80""",-,-,-,R,
+Integer,5196,"Heatpump Alarm ""81""",-,-,-,R,
+Integer,5197,"Heatpump Alarm ""82""",-,-,-,R,
+Integer,5198,"Heatpump Alarm ""83""",-,-,-,R,
+Integer,5199,"Heatpump Alarm ""84""",-,-,-,R,
+Integer,5200,"Heatpump Alarm ""85""",-,-,-,R,
+Integer,5201,Heatpump Alarm type 2??,-,-,-,R,** Min Max range on Tab Alarms
+Integer,5203,Heatpump Alarm log / reset log,-,0,50,R,
+Integer,5205,Roomterminal SG 4 Interior Compensation _2,-,0,99,R/W,
+Integer,5206,Heating set temperature SG 4,°C,-,-,R/W,/10
+Integer,5207,SG 3 - Cooling Terminal,-,0,2,R/W,0=vvw |  1=fancoil |  2=radiators
+Integer,5208,SG 4 - Cooling Terminal,-,0,2,R/W,0=vvw |  1=fancoil |  2=radiators
+Integer,5209,Heating / Cooling Reg. Valve SG 3,%,-,-,R,/10
+Integer,5210,Heating / Cooling Reg. Valve SG 2,%,-,-,R,/10
+Integer,5211,Heating / Cooling Reg. Valve SG 4,%,-,-,R,/10
+Integer,5212,Heating group SG 3 Heat curve +/-,int,0,4,R/W, 0=-4.0°C |  1=-2.0°C | 0=0.0°C | 3=+2.0°C | 4=+4.0°C
+Integer,5213,Heating group SG 4 Heat curve +/-,int,0,4,R/W, 0=-4.0°C |  1=-2.0°C | 0=0.0°C | 3=+2.0°C | 4=+4.0°C
+Integer,5214,SG3,-,0,2,R/W,0=vvw |  1=fancoil |  2=radiators
+Integer,5215,SG4,-,0,2,R/W,0=vvw |  1=fancoil |  2=radiators
+Integer,5216,Cooling group DG 1 Cooling curve +/-,-,0,4,R/W, 0=-4.0°C |  1=-2.0°C | 0=0.0°C | 3=+2.0°C | 4=+4.0°C
+Integer,5217,Cooling group SG 2 Cooling curve +/-,-,0,4,R/W, 0=-4.0°C |  1=-2.0°C | 0=0.0°C | 3=+2.0°C | 4=+4.0°C
+Integer,5218,Cooling group SG 3 Cooling curve +/-,-,0,4,R/W, 0=-4.0°C |  1=-2.0°C | 0=0.0°C | 3=+2.0°C | 4=+4.0°C
+Integer,5219,Cooling groupSG 4 Cooling curve +/-,-,0,4,R/W, 0=-4.0°C |  1=-2.0°C | 0=0.0°C | 3=+2.0°C | 4=+4.0°C
+Integer,5221,Working program by BUS,-,-,-,R/W,
+Integer,5222,BUS DHW demand,-,-,-,R/W,
+Integer,5223,BUS Pool demand,-,-,-,R/W,
+Integer,5224,BUS DG1 demand,-,-,-,R/W,
+Integer,5225,BUS SG2 demand,-,-,-,R/W,
+Integer,5226,BUS SG3 demand,-,-,-,R/W,
+Integer,5227,BUS SG4 demand,-,-,-,R/W,
+Integer,5228,Heatpump Model 2,-,0,2,R/W,0=0 |  1=C |  2=B
+Integer,5229,Heatpump Model 3,-,0,2,R/W,0=0 |  1=M |  2=T
+Integer,5230,Heatpump Model 4,-,0,3,R/W,0=0 |  1=1 |  2=2 |  3=3
+Integer,5231,Heatpump Model 5,-,0,3,R/W,0=0 |  1=A |  2=P |  3=B
+Integer,5232,Heatpump Model 6,-,0,3,R/W,0=0 |  1=H |  2=D |  3=B
+Integer,5235,Aerothermal Source Min,%,10,100,R,
+Integer,5236,Aerothermal Source Max,%,10,100,R,
+Integer,5237,Aerothermal ASF Nominal_1,-,1,-99.99,R,
+Integer,5238,Aerothermal ASF Nominal_2,-,0,99,R,
+Integer,5239,Aerothermal Defrosting by,-,0,2,R/W,0=DHW |  1=Heating |  2=Pool
+Integer,5240,Aerothermal AFS start,%,0,100,R,
+Integer,5241,Heating Connection Type,-,0,3,R/W,0=Direct |  1=Buffer |  2=Combi
+Integer,5242,Roomterminal DG 1 Type,-,0,2,R/W,0=- |  1=Th-tune |  2=Th-T
+Integer,5243,Roomterminal SG 2 Type,-,0,2,R/W,0=- |  1=Th-tune |  2=Th-T
+Integer,5244,Roomterminal SG 3 Type,-,0,2,R/W,0=- |  1=Th-tune |  2=Th-T
+Integer,5245,Roomterminal SG 4 Type,-,0,2,R/W,0=- |  1=Th-tune |  2=Th-T
+Integer,5246,Active Cooling Connection Type,-,0,2,R/W,0=- |  1=Direct |  2=Buffer
+Integer,5247,Bivalent Starting Time,Min,0,545,R/W,
+Integer,5248,Compressor start delay,Min,0,99,R/W,
+Integer,5250,SG 2 (DO7) valve,%,0,1000,R/W,
+Integer,5265,SG 3 (DO8) valve,%,0,1000,R/W,
+Integer,5266,SG 4 (DO9) valve,%,0,1000,R/W,
+Integer,5269,Factory reset,-,0,1,R/W,0=no |  1=yes
+Integer,5271,Active Demand Zone 1,-,0,2,R/W,1=Direct heating |  2= Direct Cooling
+Integer,5272,Active Demand Zone 2,-,0,2,R/W,1=Direct heating |  2= Direct Cooling
+Integer,5273,Active Demand Zone 3,-,0,2,R/W,1=Direct heating |  2= Direct Cooling
+Integer,5274,Active Demand Zone 4,-,0,2,R/W,1=Direct heating |  2= Direct Cooling
+Integer,5275,modo 1,-,0,1,R/W,0=Blank | 1=Source
+Integer,5276,modo 2,-,0,3,R/W,0=Blank | 1=Source | 2=Direct Cooling | 3=Cooling_via_buffer
+Integer,5277,modo 3,-,0,4,R/W,0=Blank | 1=Time-Out | 2=balance | 3=Cycle inversion | 4=Defrost
+Integer,5278,modo 4,-,0,7,R/W,0=Blank | 1=DHW | 2=Legionella | 3=Direct_Heating | 4=Heating_via_buffer | 5=Pool | 6=Source | 7=Floordrying
+Integer,5279,modo 5,-,0,6,R/W,0=Blank | 1=Direct_Heating | 2=Heating_via_buffer | 3=Pool | 4=Source | 5=Legionella | 6=DHW
+Integer,5280,TimeOut time in minutes,Min,0,59,R/W,
+Integer,5281,Compressor number of starts L,-,0,65535,R,
+Integer,5282,Compressor number of starts H,-,0,65535,R,
+Integer,5283,Compressor starts/hour L,-,0,65535,R,
+Integer,5284,Compressor starts/hour H,-,0,65535,R,
+Integer,5285,Software version 1,-,-,-,R,program Version = 284 +.+ 285 +.+ 286 +B
+Integer,5286,Software version 2,-,-,-,R,
+Integer,5287,Software version 3,-,-,-,R,<10=00+ / <100=0+
+Integer,5289,Alarms,-,0,12,R/W,< 2 = no Alarms |  2= Off by Alarm |  4= Off by BUS |  5= Off by Calendar |  6= Off by remote |  7 = Off by keys |  10= Blocked by alarm |  11= NightModus |  12= Off By EVU
+Integer,5291,Direct_koeling,-,0,1,R/W,1=On |  0=Off
+Integer,5292,Direct_verwarming,-,0,1,R/W,1=On |  0=Off
+Integer,5293,Air unit ASF deel 1,-,-,-,R,
+Integer,5294,Air unit ASF deel 2 ,-,-,-,R,<0 = 292.293 / >0 <10 = 292.0293 / >9 <100 = 292.293
+Integer,5295,Air unit DT Defrost temp,°C,-,-,R,/10
+Integer,5296,Ground Source Ratio,%,,,R,
+Integer,5297,Air Source Ratio,%,,,R,
+Integer,5298,Supply temperature Ground source,°C,-,-,R,/10
+Integer,5299,Heatpump Language,-,1,26,R,2= Esp |  3=Eng |  4=Deu |  5=Fra
+Coil,1,Alarm,-,0,1,R,0=- |  1=Clock Board fault or not conected
+Coil,2,Alarm,-,0,1,R,0=- |  1=Extended memory fault
+Coil,3,Alarm,-,0,1,R,0=- |  1=Low outdoor temp. & Low ground temp.
+Coil,7,Alarm,-,0,1,R,0=- |  1=AI3 Probe failure. Compressor discharge pressure
+Coil,8,Alarm,-,0,1,R,0=- |  1=AI4 Probe failure. Brine outlet temperature
+Coil,9,Alarm,-,0,1,R,0=- |  1=AI5 Probe failure. Brine return temperature
+Coil,10,Alarm,-,0,1,R,0=- |  1=AI6 Probe failure. Brine circuit pressure
+Coil,11,Alarm,-,0,1,R,0=- |  1=AI7 Probe failure. Heating outlet temperature
+Coil,12,Alarm,-,0,1,R,0=- |  1=AI8 Probe failure. Heating inlet temperature
+Coil,13,Alarm,-,0,1,R,0=- |  1=AI9 Probe failure. Heating circuit pressure
+Coil,14,Alarm,-,0,1,R,0=- |  1=AI10 Probe failure. Tank temperature 1 (DHW)
+Coil,15,Alarm,-,0,1,R,0=- |  1=AI11 Probe failure. Outdoor temperature probe
+Coil,16,Alarm,-,0,1,R,0=- |  1=AI12 Probe fault
+Coil,17,Alarm,-,0,1,R,0=- |  1=Low brine inlet temperature
+Coil,18,Alarm,-,0,1,R,0=- |  1=High discharge pressure
+Coil,19,Alarm,-,0,1,R,0=- |  1=High discharge temperature
+Coil,20,Alarm,-,0,1,R,0=- |  1=Inverter temperature
+Coil,21,Alarm,-,0,1,R,0=- |  1=Low brine outlet temperature
+Coil,24,Alarm,-,0,1,R,0=- |  1=Ecogeo internal probes fault
+Coil,25,Alarm,-,0,1,R,0=- |  1=Low pressure brine circuit
+Coil,26,Alarm,-,0,1,R,0=- |  1=Low pressure Heating circuit
+Coil,29,Group SG 3 Heating Curve,-,0,1,R/W,0=Fixed temperature |  1=Heating curve
+Coil,30,Group SG 4 Heating Curve,-,0,1,R/W,0=Fixed temperature |  1=Heating curve
+Coil,31,Group SG 3 Cooling Curve,-,0,1,R/W,0=Fixed temperature |  1=Cooling curve
+Coil,33,Alarm,-,0,1,R,0=- |  1=Evaporation temperature
+Coil,34,Alarm,-,0,1,R,0=- |  1=Low suction pressure
+Coil,36,Alarm,-,0,1,R,0=- |  1=AI2 Probe failure Compressor suction Pressure
+Coil,37,Alarm,-,0,1,R,0=- |  1=AI1 Probe failure. Compressor suction temperature
+Coil,38,Alarm,-,0,1,R,0=- |  1=Low superheat (lowSH)
+Coil,39,Alarm,-,0,1,R,0=- |  1=Low evaporation temperature (LOP)
+Coil,40,Alarm,-,0,1,R,0=- |  1=High evaporation temperature (MOP)
+Coil,41,Alarm,-,0,1,R,0=- |  1=Low suction temperature
+Coil,42,Group SG 4 Cooling Curve,-,0,1,R/W,0=Fixed temperature |  1=Cooling curve
+Coil,44,Onbekend th_T1,-,0,1,R/W,0=Inactive |  1=Active
+Coil,45,Onbekend th_T2,-,0,1,R/W,0=Inactive |  1=Active
+Coil,46,Onbekend,-,0,1,R/W,0=Inactive |  1=Active
+Coil,47,Onbekend,-,0,1,R/W,0=Inactive |  1=Active
+Coil,48,Onbekend,-,0,1,R/W,0=Inactive |  1=Active
+Coil,49,User Activation DHW Remote Control,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,50,Alarm,-,0,1,R/W,0=Active |  1=Inactive
+Coil,52,Activation Reversing cycle valve (DO11),-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,53,on/off control by BUS,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,57,Activation SG 2 (DO7),-,0,1,R/W,0=Inactive |  1=Active
+Coil,58,Activation DHW (DO3),-,0,1,R/W,0=Inactive |  1=Active
+Coil,59,Activation Passive coolinf valve (D)12),-,0,1,R/W,0=Inactive |  1=Active
+Coil,60,Activation DG 1 (DO6),-,0,1,R/W,0=Inactive |  1=Active
+Coil,61,Activation Pool device (DO5),-,0,1,R/W,0=Inactive |  1=Active
+Coil,62,Onbekend Pool,-,0,1,R/W,0=Inactive |  1=Active
+Coil,63,Remote Control - Winter/Summer - Logic DI2,-,0,1,R/W,0=Inactive |  1=Active
+Coil,64,DHW Operation Mode,-,0,1,R/W,0=Inactive |  1=Active
+Coil,65,Activation Pool,-,0,1,R/W,0=Inactive |  1=Active
+Coil,66,Pool Logic DI4,-,0,1,R/W,0=NC |  1=NO
+Coil,69,Remote Control - EVU signal - Logic DI1,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,70,Remote Control - DHW - Logic DI3,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,73,Roomterminal DG 1 Logic,-,0,1,R/W,0=NC |  1=NO
+Coil,75,Heatpump Trial period,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,76,DHW Legionella treatment,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,77,Pool heat production,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,83,Reset Alarm,-,0,1,R/W,0=NO |  1=YES
+Coil,85,Activation Heating,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,86,Roomterminal SG 3 Logic,-,0,1,R/W,0=NC |  1=NO
+Coil,88,Activation Defrost elect. Heater,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,91,Reset Energy Meters,-,0,1,R/W,0=NO |  1=YES
+Coil,92,Daylight Savingtime,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,94,Set current minutes,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,95,Set current hours,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,96,Set current day,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,97,Set current month,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,98,Set current year,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,101,Heatpump Air Source (Hybrid sys val 1),-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,102,Heatpump Ground Source (Hybrid sys val 2),-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,103,Aerothermal - Defrosting,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,104,Heatpump Night time,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,105,Heating,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,106,User Activation DHW,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,107,Cooling,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,108,DHW Legionella treatment MO,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,109,DHW Legionella treatment TU,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,110,DHW Legionella treatment WE,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,111,DHW Legionella treatment TH,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,112,DHW Legionella treatment FR,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,113,DHW Legionella treatment SA,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,114,DHW Legionella treatment SU,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,118,Group DG 1 Heating Curve,-,0,1,R/W,0=Fixed temperature |  1=Heating curve
+Coil,119,Group DG 1 Cooling Curve,-,0,1,R/W,0=Fixed temperature |  1=Cooling curve
+Coil,120,Group SG 2 Cooling Curve,-,0,1,R/W,0=Fixed temperature |  1=Cooling curve
+Coil,121,Floor drying function,-,0,1,R/W,0=off |  1=on
+Coil,122,Activation Remote Control - DHW,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,123,Roomterminal SG 2 Logic,-,0,1,R/W,0=NC |  1=NO
+Coil,124,Activation Remote Control - Winter/Summer,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,125,Group SG 2 Heating Curve,-,0,1,R/W,0=Fixed temperature |  1=Heating curve
+Coil,126,Delete Alarm Logs,-,0,1,R/W,0=NO |  1=YES
+Coil,127,Summer,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,128,Winter,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,129,Activation HTR,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,132,Roomterminal SG 4 Logic,-,0,1,R/W,0=NC |  1=NO
+Coil,150,Heating group DG 1,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,151,Heating group SG 2,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,152,Heating group SG 3,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,153,Heating group SG 4,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,154,Group SG 2 valve,-,0,1,R/W,0=Direct 0-10V |  1=Reverse 10-0V
+Coil,155,Group SG 3 valve,-,0,1,R/W,0=Direct 0-10V |  1=Reverse 10-0V
+Coil,156,Group SG 4 valve,-,0,1,R/W,0=Direct 0-10V |  1=Reverse 10-0V
+Coil,157,Roomterminal DT S/W on/off,-,0,1,R/W,0=DT S/W Off |  1=DT S/W On
+Coil,158,Activation Simultaneous consum. heating+cooling,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,159,Activation Active Cooling,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,160,Activation Passive Colling,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,161,Passive Cooling Production Pump,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,162,Passive Cooling Brine Pump,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,163,Cooling group DG 1,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,164,Cooling group SG 2,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,165,Cooling group SG 3,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,166,Cooling group SG 4,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,170,DHW Recirculation pump,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,171,Internal Auxiliary systems DHW,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,172,Internal Auxiliary systems Heating,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,173,Internal Auxiliary systems Pool,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,174,DHW Electrical heater,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,175,External Auxiliary systems Heating ,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,176,External Auxiliary systems DHW,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,177,External Auxiliary systems Pool,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,178,External Auxiliary systems Production Pump ,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,179,Activation Remote Control - EVU Signal,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,180,Production Frost Protection,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,182,Heating Support 1 Emergency,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,183,Heating Support 1 Support,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,184,Heating Support 2 Emergency,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,185,Heating Support 2 Support,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,186,DHW Support 1 Emergency,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,187,DHW Support 1 Support,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,188,DHW Support 2 Emergency,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,189,DHW Support 2 Support,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,190,DHW recirculation,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,191,Pool Winter,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,192,Pool Summer,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,193,Pool Support 1 Emergency,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,194,Pool Support 1 Support,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,195,Pool Support 2 Emergency,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,196,Pool Support 2 Support,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,197,Activation Heatpump pumps (production & Source),-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,198,Activation Status Auxiliary DHW (R17),-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,199,Activation Status Auxiliary Buffer (R18),-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,200,Activation Status Auxiliary Internal E Heater,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,201,Activation DHW recircalation pump (D04),-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,202,Activation Heat/cool distribution valve (DO16),-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,203,Activation SG 3 (DO8),-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,204,Activation SG 4 (DO9),-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,205,Activation Boiler,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,206,Active Demand Direct heating,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,207,Active Demand Direct Cooling,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,208,Active Demand DHW,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,209,Active Demand Pool,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,210,Active Demand HTR,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,211,Actibe DHW recirculation,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,212,Alarm,-,0,1,R,0=- |  1=Inverter comms fault
+Coil,213,Alarm,-,0,1,R,0=- |  1=High brine temperature
+Coil,214,Alarm,-,0,1,R,0=- |  1=pCOe number:AI13 Analog input probe on channel 1 disconnected or broken
+Coil,215,Alarm,-,0,1,R,0=- |  1=pCOe number:AI14 Analog input probe on channel 2 disconnected or broken
+Coil,216,Alarm,-,0,1,R,0=- |  1=pCOe number:AI15 Analog input probe on channel 3 disconnected or broken
+Coil,217,Alarm,-,0,1,R,0=- |  1=pCOe number:AI16 Analog input probe on channel 4 disconnected or broken
+Coil,218,Alarm,-,0,1,R,0=- |  1=pCOe number: pCOe offline
+Coil,219,Alarm,-,0,1,R,0=- |  1=th-T 1 Error (thermostat for DG1) **
+Coil,220,Alarm,-,0,1,R,0=- |  1=th-T 1 offline (thermostat for DG1) **
+Coil,221,Alarm,-,0,1,R,0=- |  1=th-T 2 Error (thermostat for SG2) **
+Coil,222,Alarm,-,0,1,R,0=- |  1=th-T 2 offline (thermostat for SG2) **
+Coil,223,Alarm,-,0,1,R,0=- |  1=th-T 3 Error (thermostat for SG3) **
+Coil,224,Alarm,-,0,1,R,0=- |  1=th-T 3 offline (thermostat for SG3) **
+Coil,225,Alarm,-,0,1,R,0=- |  1=th-T 4 Error (thermostat for SG4) **
+Coil,226,Alarm,-,0,1,R,0=- |  1=th-T 4 offline (thermostat for SG4) **
+Coil,227,Energy meter Cooling,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,228,Energy meter Heating,-,0,1,R/W,0=Disabled |  1=Enabled
+Coil,231,Floor drying function phase 1,-,0,1,R/W,0=unfinished |  1=finished
+Coil,232,Floor drying function phase 2,-,0,1,R/W,0=unfinished |  1=finished | Dependeing on installation some coils might be used for recirculation
+Coil,233,Floor drying function phase 3,-,0,1,R/W,0=unfinished |  1=finished | Dependeing on installation some coils might be used for recirculation
+Coil,234,Floor drying function phase 4,-,0,1,R/W,0=unfinished |  1=finished | Dependeing on installation some coils might be used for recirculation
+Coil,235,Floor drying function phase 5,-,0,1,R/W,0=unfinished |  1=finished | Dependeing on installation some coils might be used for recirculation
+Coil,236,Floor drying function phase 6,-,0,1,R/W,0=unfinished |  1=finished
+Coil,237,Heatpump StandBy,-,0,1,R/W,0=Disabled |  1=Enabled
