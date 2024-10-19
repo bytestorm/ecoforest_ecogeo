@@ -1,3 +1,5 @@
+[![SWUbanner](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct-single.svg)](https://stand-with-ukraine.pp.ua/)
+
 Ecoforest EcoGeo heat pump integration PoC
 
 To install this integration, add this GitHub Repo to the HACS Custom Repositories or use the button below
