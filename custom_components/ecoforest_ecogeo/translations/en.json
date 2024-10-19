@@ -103,6 +103,24 @@
       },
       "power_output": {
         "name": "Total output power"
+      },
+      "t_brine_in": {
+        "name": "Brine input temperature"
+      },
+      "t_brine_out": {
+        "name": "Brine output temperature"
+      },
+      "p_brine": {
+        "name": "Brine pressure"
+      },
+      "p_output": {
+        "name": "Output pressure"
+      },
+      "cop": {
+        "name": "COP"
+      },
+      "pf": {
+        "name": "PF"
       }
     },
     "switch": {

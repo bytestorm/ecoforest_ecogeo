@@ -16,7 +16,7 @@ OP_TYPE_GET_REGISTER = 2002
 OP_TYPE_SET = 2011
 
 REQUESTS = [
-    {"address": 3, "length": 9, "op": OP_TYPE_GET_REGISTER},
+    {"address": 1, "length": 31, "op": OP_TYPE_GET_REGISTER},
     {"address": 105, "length": 3, "op": OP_TYPE_GET_SWITCH},
     {"address": 194, "length": 8, "op": OP_TYPE_GET_REGISTER},
     {"address": 5066, "length": 18, "op": OP_TYPE_GET_REGISTER},
@@ -89,6 +89,36 @@ MAPPING = {
         "type": "custom",
         "entity_type": "power",
         "value_fn": lambda data: data["power_cooling"] + data["power_heating"]
+    },
+    "t_brine_in": {
+        "type": "float",
+        "address": 2,
+        "entity_type": "temperature"
+    },
+    "t_brine_out": {
+        "type": "float",
+        "address": 1,
+        "entity_type": "temperature"
+    },
+    "p_brine": {
+        "type": "float",
+        "address": 13,
+        "entity_type": "pressure"
+    },
+    "p_output": {
+        "type": "float",
+        "address": 14,
+        "entity_type": "pressure"
+    },
+    "cop": {
+        "type": "float",
+        "address": 30,
+        "entity_type": "rate"
+    },
+    "pf": {
+        "type": "float",
+        "address": 31,
+        "entity_type": "rate"
     },
     "switch_heating": {
         "type": "boolean",

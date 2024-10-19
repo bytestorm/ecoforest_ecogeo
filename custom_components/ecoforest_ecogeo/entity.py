@@ -6,7 +6,7 @@ from collections.abc import Callable
 from dataclasses import dataclass
 
 from homeassistant.components.sensor import SensorDeviceClass, SensorEntityDescription
-from homeassistant.const import UnitOfTemperature, UnitOfPower
+from homeassistant.const import UnitOfTemperature, UnitOfPower, UnitOfPressure
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity import EntityDescription, generate_entity_id
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
@@ -19,6 +19,7 @@ from .overrides.device import EcoGeoDevice
 
 SENSOR_TYPES = {
     "temperature": {"class": SensorDeviceClass.TEMPERATURE, "unit": UnitOfTemperature.CELSIUS},
+    "pressure": {"class": SensorDeviceClass.PRESSURE, "unit": UnitOfPressure.BAR},
     "power": {"class": SensorDeviceClass.POWER, "unit": UnitOfPower.WATT}
 }
 
