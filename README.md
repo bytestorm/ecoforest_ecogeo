@@ -6,9 +6,15 @@ To install this integration, add this GitHub Repo to the HACS Custom Repositorie
 
 [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=bytestorm&repository=ecoforest_ecogeo&category=integration)
 
-Then: 
-- Use "Settings" -> "Devices & Services" -> "Add integration"
-- Look for "Ecoforest Ecogeo" integration to start setting it up using your credentials
+After installing the integration in HACS
+- Restart Home Assistant 
+- Go to "Settings" -> "Devices & Services" -> "Add integration"
+- Look for "Ecoforest Ecogeo" integration to start setting it up
+- For "Ecoforest Easynet URL" use the web interface address of your heat pump (e.g. http://192.168.1.200/)
+- Username is your heat pump serial number (same as its web interface)
+- Password is the first 8 characters of the original wireless network password (same as its web interface)
+- Optionally, you can specify an alias that will be used instead of the model name to generate entity prefixes
+
 
 ------------
 
