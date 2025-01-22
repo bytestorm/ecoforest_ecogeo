@@ -25,7 +25,7 @@ Custom visualization:
 <details>
   <summary>Details...</summary>
   
-  This card is built using [power-flow-card-plus](https://github.com/flixlix/power-flow-card-plus). You can install it with HACS.
+  This card is built using [power-flow-card-plus](https://github.com/flixlix/power-flow-card-plus). You can install it with HACS.<br />
   Just replace entity prefixes (ebfhbb in my case) with the model name or the alias of your heat pump.
 
 
