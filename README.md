@@ -25,7 +25,7 @@ Custom visualization:
 <details>
   <summary>Details...</summary>
   
-  This card is built using [power-flow-card](https://github.com/ulic75/power-flow-card). You can install it with HACS.
+  This card is built using [power-flow-card-plus](https://github.com/flixlix/power-flow-card-plus). You can install it with HACS.
 
 
 ```yaml
