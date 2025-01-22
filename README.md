@@ -18,9 +18,15 @@ After installing the integration in HACS
 
 ------------
 
-Custom Power Flow card for visualization:
+Custom visualization:
 
 ![flow](https://github.com/bytestorm/ecoforest_ecogeo/blob/master/flow.png?raw=true)
+
+<details>
+  <summary>Details...</summary>
+  
+  This card is built using [power-flow-card](https://github.com/ulic75/power-flow-card). You can install it with HACS.
+
 
 ```yaml
 type: custom:power-flow-card-plus
@@ -104,3 +110,4 @@ watt_threshold: 1000
 transparency_zero_lines: 0
 disable_dots: true
 ```
+</details>
