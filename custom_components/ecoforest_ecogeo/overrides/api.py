@@ -17,6 +17,7 @@ OP_TYPE_SET = 2011
 
 REQUESTS = [
     {"address": 1, "length": 31, "op": OP_TYPE_GET_REGISTER},
+    {"address": 57, "length": 4, "op": OP_TYPE_GET_SWITCH},
     {"address": 105, "length": 3, "op": OP_TYPE_GET_SWITCH},
     {"address": 194, "length": 8, "op": OP_TYPE_GET_REGISTER},
     {"address": 5066, "length": 18, "op": OP_TYPE_GET_REGISTER},
@@ -133,6 +134,16 @@ MAPPING = {
     "switch_dhw": {
         "type": "boolean",
         "address": 106,
+        "entity_type": "switch"
+    },
+    "switch_dg1_output": {
+        "type": "boolean",
+        "address": 60,
+        "entity_type": "switch"
+    },
+    "switch_sg2_output": {
+        "type": "boolean",
+        "address": 57,
         "entity_type": "switch"
     },
 }

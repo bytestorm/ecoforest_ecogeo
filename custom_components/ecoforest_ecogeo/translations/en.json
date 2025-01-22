@@ -132,6 +132,12 @@
       },
       "switch_dhw": {
         "name": "DHW enabled"
+      },
+      "switch_dg1_output": {
+        "name": "DG1 Pump"
+      },
+      "switch_sg2_output": {
+        "name": "SG2 Pump"
       }
     }
   }
