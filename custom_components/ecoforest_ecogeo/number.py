@@ -78,26 +78,7 @@ class EcoforestNumberEntity(EcoforestEntity, NumberEntity):
          """Return the state of the ecoforest device."""
          return self.data.state[self.entity_description.key]
 
-    #_native? async def set_value(self, value: float):
-    #aaa     """Turn on the ecoforest device."""
-    #aaa     await self.coordinator.api.turn_switch(self.entity_description.key, True)
-    #aaa     await self.coordinator.async_request_refresh()
-
-
-
-
-
-    # @property
-    # def is_on(self) -> bool:
-    #     """Return the state of the ecoforest device."""
-    #     return self.data.state[self.entity_description.key]
-    #
-    # async def async_turn_on(self):
-    #     """Turn on the ecoforest device."""
-    #     await self.coordinator.api.turn_switch(self.entity_description.key, True)
-    #     await self.coordinator.async_request_refresh()
-    #
-    # async def async_turn_off(self):
-    #     """Turn off the ecoforest device."""
-    #     await self.coordinator.api.turn_switch(self.entity_description.key, False)
-    #     await self.coordinator.async_request_refresh()
+    async def async_set_native_value(self, value: float):
+         """Set the value."""
+         await self.coordinator.api.set_numeric_value(self.entity_description.key, value)
+         await self.coordinator.async_request_refresh()

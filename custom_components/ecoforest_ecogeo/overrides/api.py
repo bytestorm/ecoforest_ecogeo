@@ -297,11 +297,22 @@ class EcoGeoApi(EcoforestApi):
         )
         return await self.get()
 
+    async def set_numeric_value(self, name, value: float) -> EcoGeoDevice:
+        if name not in MAPPING.keys():
+            raise Exception("unknown register")
+
+        converted_value = self.convert_to_ecoforest_int(value)
+
+        await self._request(
+            data={"idOperacion": OP_TYPE_SET_REGISTER, "dir": MAPPING[name]["address"], "num": 1, converted_value: converted_value}
+        )
+        return await self.get()
+
     def _parse(self, response: str) -> list[str]:
         lines = response.split('\n')
 
         a, b = lines[0].split('=')
-        if a not in ["error_geo_get_reg", "error_geo_get_bit", "error_geo_set_bit"] or b != "0":
+        if a not in ["error_geo_get_reg", "error_geo_get_bit", "error_geo_set_reg", "error_geo_set_bit"] or b != "0":
             raise Exception("bad response: {}".format(response))
 
         return lines[1].split('&')[2:]
@@ -314,6 +325,14 @@ class EcoGeoApi(EcoforestApi):
             result += model_dictionary[self.parse_ecoforest_int(data[DataTypes.Register][address])]
 
         return result
+
+    def convert_to_ecoforest_int(self, value):
+        value = int(value * 10)
+
+        if value < 0:
+            value += 65536
+
+        return ("0000" + hex(value)[2:])[-4:]
 
     def parse_ecoforest_int(self, value):
         result = int(value, 16)
