@@ -25,6 +25,10 @@ from .overrides.api import MAPPING
 class EcoforestNumberEntityDescription(NumberEntityDescription):
     """Describes an Ecoforest number entity."""
 
+    min: None
+    max: None
+    step: None
+
     value_fn: Callable[[Device], bool]
     switch_fn: Callable[[EcoforestApi, bool], Awaitable[Device]]
 

@@ -22,6 +22,7 @@ from .coordinator import EcoforestCoordinator
 from .entity import EcoforestEntity, EcoforestSensorEntityDescription
 from .overrides.device import EcoGeoDevice
 from .overrides.api import MAPPING
+from .entity import SENSOR_TYPES
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -34,7 +35,7 @@ async def async_setup_entry(
 
     device_alias = config_entry.data[CONF_ALIAS] if CONF_ALIAS in config_entry.data else None
     entities = [
-        EcoforestSensor(coordinator, key, definition, device_alias) for key, definition in MAPPING.items() if definition["entity_type"] != "switch"
+        EcoforestSensor(coordinator, key, definition, device_alias) for key, definition in MAPPING.items() if definition["entity_type"] in SENSOR_TYPES.keys()
     ]
 
     async_add_entities(entities)

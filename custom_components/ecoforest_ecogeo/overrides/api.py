@@ -26,7 +26,7 @@ class Operations:
 
 REQUESTS = {
     DataTypes.Coil : [
-        {"address": 57, "length": 4},
+        {"address": 57, "length": 27},
         {"address": 105, "length": 3},
     ],
 
@@ -148,13 +148,13 @@ MAPPING = {
         "data_type": DataTypes.Register,
         "type": "float",
         "address": 30,
-        "entity_type": "rate"
+        "entity_type": "measurement"
     },
     "pf": {
         "data_type": DataTypes.Register,
         "type": "float",
         "address": 31,
-        "entity_type": "rate"
+        "entity_type": "measurement"
     },
     "switch_heating": {
         "data_type": DataTypes.Coil,
@@ -186,26 +186,41 @@ MAPPING = {
         "address": 57,
         "entity_type": "switch"
     },
+    "button_reset_alarms": {
+        "data_type": DataTypes.Coil,
+        "type": "boolean",
+        "address": 83,
+        "entity_type": "button"
+    },
     "number_dhw_setpoint": {
         "data_type": DataTypes.Register,
         "type": "float",
         "address": 17,
         "entity_type": "temperature",
-        "is_number": True
+        "is_number": True,
+        "min": 0,
+        "max": 65,
+        "step": 0.1
     },
     "number_dhw_dt_start": {
         "data_type": DataTypes.Register,
         "type": "float",
         "address": 15,
         "entity_type": "temperature",
-        "is_number": True
+        "is_number": True,
+        "min": 2,
+        "max": 25,
+        "step": 0.1
     },
     "number_dhw_htr_set": {
         "data_type": DataTypes.Register,
         "type": "float",
         "address": 59,
         "entity_type": "temperature",
-        "is_number": True
+        "is_number": True,
+        "min": 0,
+        "max": 70,
+        "step": 0.1
     }
 }
 

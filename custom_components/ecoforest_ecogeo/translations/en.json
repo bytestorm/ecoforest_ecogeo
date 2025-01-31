@@ -150,6 +150,11 @@
       "switch_sg2_output": {
         "name": "SG2 Pump"
       }
+    },
+    "button": {
+      "button_reset_alarms": {
+        "name": "Reset Alarms"
+      }
     }
   }
 }
