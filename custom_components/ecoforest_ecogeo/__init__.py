@@ -10,7 +10,7 @@ from .const import DOMAIN
 from .coordinator import EcoforestCoordinator
 from .overrides.api import EcoGeoApi
 
-PLATFORMS = [Platform.SENSOR, Platform.SWITCH]
+PLATFORMS = [Platform.SENSOR, Platform.SWITCH, Platform.NUMBER, Platform.BUTTON]
 
 
 _LOGGER = logging.getLogger(__name__)

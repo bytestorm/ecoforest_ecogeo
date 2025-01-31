@@ -5,7 +5,7 @@ from __future__ import annotations
 from collections.abc import Callable
 from dataclasses import dataclass
 
-from homeassistant.components.sensor import SensorDeviceClass, SensorEntityDescription
+from homeassistant.components.sensor import SensorDeviceClass, SensorEntityDescription, SensorStateClass
 from homeassistant.const import UnitOfTemperature, UnitOfPower, UnitOfPressure
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity import EntityDescription, generate_entity_id
@@ -20,7 +20,8 @@ from .overrides.device import EcoGeoDevice
 SENSOR_TYPES = {
     "temperature": {"class": SensorDeviceClass.TEMPERATURE, "unit": UnitOfTemperature.CELSIUS},
     "pressure": {"class": SensorDeviceClass.PRESSURE, "unit": UnitOfPressure.BAR},
-    "power": {"class": SensorDeviceClass.POWER, "unit": UnitOfPower.WATT}
+    "power": {"class": SensorDeviceClass.POWER, "unit": UnitOfPower.WATT},
+    "measurement": {"state_class": SensorStateClass.MEASUREMENT}
 }
 
 
@@ -48,8 +49,9 @@ class EcoforestEntity(CoordinatorEntity[EcoforestCoordinator]):
             self.entity_description = EcoforestSensorEntityDescription(
                 key=key,
                 translation_key=key,
-                native_unit_of_measurement = SENSOR_TYPES[definition["entity_type"]]["unit"],
-                device_class = SENSOR_TYPES[definition["entity_type"]]["class"]
+                native_unit_of_measurement = SENSOR_TYPES[definition["entity_type"]]["unit"] if "unit" in SENSOR_TYPES[definition["entity_type"]].keys() else None,
+                device_class = SENSOR_TYPES[definition["entity_type"]]["class"] if "class" in SENSOR_TYPES[definition["entity_type"]].keys() else None,
+                state_class=SENSOR_TYPES[definition["entity_type"]]["state_class"] if "state_class" in SENSOR_TYPES[definition["entity_type"]].keys() else None
             )
         else:
             self.entity_description = EcoforestSensorEntityDescription(

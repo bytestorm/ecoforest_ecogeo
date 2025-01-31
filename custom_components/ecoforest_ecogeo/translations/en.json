@@ -123,6 +123,17 @@
         "name": "PF"
       }
     },
+    "number": {
+      "number_dhw_setpoint": {
+        "name": "DHW set temperature"
+      },
+      "number_dhw_dt_start": {
+        "name": "DHW DT start temperature"
+      },
+      "number_dhw_htr_set": {
+        "name": "DHW HTR set temperature"
+      }
+    },
     "switch": {
       "switch_heating": {
         "name": "Heating enabled"
@@ -138,6 +149,11 @@
       },
       "switch_sg2_output": {
         "name": "SG2 Pump"
+      }
+    },
+    "button": {
+      "button_reset_alarms": {
+        "name": "Reset Alarms"
       }
     }
   }
