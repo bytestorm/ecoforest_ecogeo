@@ -33,7 +33,7 @@ REQUESTS = {
     DataTypes.Register: [
         {"address": 1, "length": 31},
         {"address": 59, "length": 1},
-        {"address": 194, "length": 8},
+        {"address": 176, "length": 26},
         {"address": 5066, "length": 18},
         {"address": 5185, "length": 1},
 
@@ -220,6 +220,16 @@ MAPPING = {
         "is_number": True,
         "min": 0,
         "max": 70,
+        "step": 0.1
+    },
+    "number_room_terminal_dg1_set_temperature": {
+        "data_type": DataTypes.Register,
+        "type": "float",
+        "address": 176,
+        "entity_type": "temperature",
+        "is_number": True,
+        "min": 15,
+        "max": 30,
         "step": 0.1
     }
 }
