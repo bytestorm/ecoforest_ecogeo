@@ -1,7 +1,7 @@
 {
   "domain": "ecoforest_ecogeo",
   "name": "Ecoforest Ecogeo",
-  "codeowners": ["@bytestorm"],
+  "codeowners": ["@radutopala"],
   "config_flow": true,
   "documentation": "https://github.com/bytestorm/ecoforest_ecogeo",
   "iot_class": "local_polling",
