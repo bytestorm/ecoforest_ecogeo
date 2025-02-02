@@ -3,10 +3,10 @@
   "name": "Ecoforest Ecogeo",
   "codeowners": ["@radutopala"],
   "config_flow": true,
-  "documentation": "https://github.com/bytestorm/ecoforest_ecogeo",
+  "documentation": "https://github.com/radutopala/ecoforest_ecogeo",
   "iot_class": "local_polling",
   "loggers": ["pyecoforest"],
-  "requirements": ["pyecoforest==0.4.0", "httpx"],
+  "requirements": ["pyecoforest==0.4.0"],
   "version": "0.0.1",
-  "issue_tracker": "https://github.com/bytestorm/ecoforest_ecogeo/issues"
+  "issue_tracker": "https://github.com/radutopala/ecoforest_ecogeo/issues"
 }

@@ -1,1 +1,3 @@
- 
+homeassistant
+httpx
+voluptuous
