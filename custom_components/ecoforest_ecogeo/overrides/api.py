@@ -195,7 +195,7 @@ MAPPING = {
     "number_dhw_setpoint": {
         "data_type": DataTypes.Register,
         "type": "float",
-        "address": 17,
+        "address": 40,
         "entity_type": "temperature",
         "is_number": True,
         "min": 0,
