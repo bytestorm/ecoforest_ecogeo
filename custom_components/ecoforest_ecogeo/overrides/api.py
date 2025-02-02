@@ -31,7 +31,7 @@ REQUESTS = {
     ],
 
     DataTypes.Register: [
-        {"address": 1, "length": 31},
+        {"address": 1, "length": 45},
         {"address": 59, "length": 1},
         {"address": 176, "length": 26},
         {"address": 5066, "length": 18},
@@ -57,7 +57,7 @@ MAPPING = {
     "t_dhw": {
         "data_type": DataTypes.Register,
         "type": "float",
-        "address": 8,
+        "address": 11,
         "entity_type": "temperature"
     },
     "t_dg1_h": {
@@ -93,7 +93,7 @@ MAPPING = {
     "t_outdoor": {
         "data_type": DataTypes.Register,
         "type": "float",
-        "address": 11,
+        "address": 20,
         "entity_type": "temperature"
     },
     "power_heating": {
