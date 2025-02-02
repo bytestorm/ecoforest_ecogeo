@@ -47,8 +47,8 @@ class EcoForestEcoGeoConfigFlow(ConfigFlow, domain=DOMAIN):
                 device = await api.get()
             except EcoforestAuthenticationRequired:
                 errors["base"] = "invalid_auth"
-            except Exception:
-                _LOGGER.exception("Unexpected exception")
+            except Exception as exc:
+                _LOGGER.exception("Unexpected exception: %s", str(exc))
                 errors["base"] = "cannot_connect"
             else:
                 device_id = device.model_name
