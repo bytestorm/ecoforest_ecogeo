@@ -132,9 +132,6 @@
       },
       "number_dhw_htr_set": {
         "name": "DHW HTR set temperature"
-      },
-      "number_room_terminal_dg1_set_temperature": {
-        "name": "Room terminal DG1 set temperature"
       }
     },
     "switch": {
