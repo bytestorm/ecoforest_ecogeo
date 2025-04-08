@@ -186,6 +186,18 @@ MAPPING = {
         "address": 57,
         "entity_type": "switch"
     },
+    "switch_pool_output": {
+        "data_type": DataTypes.Coil,
+        "type": "boolean",
+        "address": 65,
+        "entity_type": "switch"
+    },
+    "switch_pool_device_output": {
+        "data_type": DataTypes.Coil,
+        "type": "boolean",
+        "address": 61,
+        "entity_type": "switch"
+    },
     "button_reset_alarms": {
         "data_type": DataTypes.Coil,
         "type": "boolean",

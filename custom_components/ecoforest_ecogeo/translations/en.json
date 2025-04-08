@@ -149,6 +149,12 @@
       },
       "switch_sg2_output": {
         "name": "SG2 Pump"
+      },
+      "switch_pool_output": {
+        "name": "Pool"
+      },
+      "switch_pool_device_output": {
+        "name": "Pool Device"
       }
     },
     "button": {
