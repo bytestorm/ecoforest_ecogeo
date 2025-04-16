@@ -21,7 +21,8 @@ SENSOR_TYPES = {
     "temperature": {"class": SensorDeviceClass.TEMPERATURE, "unit": UnitOfTemperature.CELSIUS},
     "pressure": {"class": SensorDeviceClass.PRESSURE, "unit": UnitOfPressure.BAR},
     "power": {"class": SensorDeviceClass.POWER, "unit": UnitOfPower.WATT},
-    "measurement": {"state_class": SensorStateClass.MEASUREMENT}
+    "measurement": {"state_class": SensorStateClass.MEASUREMENT},
+    "enum": {"class": SensorDeviceClass.ENUM}
 }
 
 

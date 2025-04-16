@@ -26,8 +26,10 @@ class Operations:
 
 REQUESTS = {
     DataTypes.Coil : [
+        {"address": 1, "length": 41},
         {"address": 57, "length": 27},
         {"address": 105, "length": 3},
+        {"address": 212, "length": 15},
     ],
 
     DataTypes.Register: [
@@ -118,7 +120,7 @@ MAPPING = {
         "data_type": DataTypes.Register,
         "type": "custom",
         "entity_type": "power",
-        "value_fn": lambda data: data["power_cooling"] + data["power_heating"]
+        "value_fn": lambda data, raw: data["power_cooling"] + data["power_heating"]
     },
     "t_brine_in": {
         "data_type": DataTypes.Register,
@@ -233,6 +235,12 @@ MAPPING = {
         "min": 0,
         "max": 70,
         "step": 0.1
+    },
+    "alarm": {
+        "data_type": DataTypes.Coil,
+        "type": "custom",
+        "entity_type": "enum",
+        "value_fn": lambda data, raw_data: EcoGeoApi.get_alarm(raw_data)
     }
 }
 
@@ -277,7 +285,7 @@ class EcoGeoApi(EcoforestApi):
 
             if definition["type"] != "custom":
                 continue
-            device_info[name] = definition["value_fn"](device_info)
+            device_info[name] = definition["value_fn"](device_info, state)
 
         _LOGGER.debug(device_info)
         _LOGGER.debug(state)
@@ -355,3 +363,58 @@ class EcoGeoApi(EcoforestApi):
 
     def parse_ecoforest_float(self, value):
         return self.parse_ecoforest_int(value) / 10
+
+    def get_alarm(data):
+        alarm_registers = [
+            1,	#Clock Board fault or not connected
+            2,	#Extended memory fault
+            3,	#Low outdoor temp. & Low ground temp.
+            7,	#AI3 Probe failure. Compressor discharge pressure
+            8,	#AI4 Probe failure. Brine outlet temperature
+            9,	#AI5 Probe failure. Brine return temperature
+            10,	#AI6 Probe failure. Brine circuit pressure
+            11,	#AI7 Probe failure. Heating outlet temperature
+            12,	#AI8 Probe failure. Heating inlet temperature
+            13,	#AI9 Probe failure. Heating circuit pressure
+            14,	#AI10 Probe failure. Tank temperature 1 (DHW)
+            15,	#AI11 Probe failure. Outdoor temperature probe
+            16,	#AI12 Probe fault
+            17,	#Low brine inlet temperature
+            18,	#High discharge pressure
+            19,	#High discharge temperature
+            20,	#Inverter temperature
+            21,	#Low brine outlet temperature
+            24,	#Ecogeo internal probes fault
+            25,	#Low pressure brine circuit
+            26,	#Low pressure Heating circuit
+            33,	#Evaporation temperature
+            34,	#Low suction pressure
+            36,	#AI2 Probe failure Compressor suction Pressure
+            37,	#AI1 Probe failure. Compressor suction temperature
+            38,	#Low superheat (lowSH)
+            39,	#Low evaporation temperature (LOP)
+            40,	#High evaporation temperature (MOP)
+            41,	#Low suction temperature
+            212,	#Inverter comms fault
+            213,	#High brine temperature
+            214,	#pCOe number:AI13 Analog input probe on channel 1 disconnected or broken
+            215,	#pCOe number:AI14 Analog input probe on channel 2 disconnected or broken
+            216,	#pCOe number:AI15 Analog input probe on channel 3 disconnected or broken
+            217,	#pCOe number:AI16 Analog input probe on channel 4 disconnected or broken
+            218,	#pCOe number: pCOe offline
+            219,	#th-T 1 Error (thermostat for DG1) **
+            220,	#th-T 1 offline (thermostat for DG1) **
+            221,	#th-T 2 Error (thermostat for SG2) **
+            222,	#th-T 2 offline (thermostat for SG2) **
+            223,	#th-T 3 Error (thermostat for SG3) **
+            224,	#th-T 3 offline (thermostat for SG3) **
+            225,	#th-T 4 Error (thermostat for SG4) **
+            226,	#th-T 4 offline (thermostat for SG4) **
+        ]
+
+        for address in alarm_registers:
+            if data[DataTypes.Coil][address] == "0":
+                continue
+            return address
+
+        return 0
