@@ -18,8 +18,8 @@ from .overrides.device import EcoGeoDevice
 
 
 SENSOR_TYPES = {
-    "temperature": {"class": SensorDeviceClass.TEMPERATURE, "unit": UnitOfTemperature.CELSIUS},
-    "pressure": {"class": SensorDeviceClass.PRESSURE, "unit": UnitOfPressure.BAR},
+    "temperature": {"class": SensorDeviceClass.TEMPERATURE, "unit": UnitOfTemperature.CELSIUS, "state_class": SensorStateClass.MEASUREMENT},
+    "pressure": {"class": SensorDeviceClass.PRESSURE, "unit": UnitOfPressure.BAR, "state_class": SensorStateClass.MEASUREMENT},
     "power": {"class": SensorDeviceClass.POWER, "unit": UnitOfPower.WATT, "state_class": SensorStateClass.MEASUREMENT},
     "measurement": {"state_class": SensorStateClass.MEASUREMENT},
     "enum": {"class": SensorDeviceClass.ENUM}
